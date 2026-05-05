@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,6 +25,7 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-black text-white selection:bg-white/20">
+        <CustomCursor />
         <Navbar />
         {children}
       </body>
