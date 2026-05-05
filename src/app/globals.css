@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
+@theme {
+  --color-base: #000000;
+  --color-primary: #ffffff;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-hover: rgba(255, 255, 255, 0.08);
+  --color-border-glass: rgba(255, 255, 255, 0.1);
+  --color-border-glass-hover: rgba(255, 255, 255, 0.15);
+  --color-border-focus: rgba(255, 255, 255, 0.2);
+  --color-border-focus-glow: rgba(255, 255, 255, 0.6);
+  --color-glow-soft: rgba(255, 255, 255, 0.03);
+  --color-glow-interactive: rgba(255, 255, 255, 0.15);
+
+  --font-sans: var(--font-inter);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #000000;
+  --foreground: #e5e2e1;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Base Utility Classes for Glassmorphism */
+@utility glass-panel {
+  background-color: var(--color-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border-glass);
+}
+
+@utility glass-panel-active {
+  background-color: var(--color-glass-hover);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border-glass-hover);
+}
+
+@utility glow-soft {
+  background: radial-gradient(circle, var(--color-glow-soft) 0%, transparent 70%);
+}
+
+@utility glow-interactive {
+  background: radial-gradient(circle, var(--color-glow-interactive) 0%, transparent 70%);
 }
