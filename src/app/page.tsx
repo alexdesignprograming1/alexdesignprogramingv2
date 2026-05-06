@@ -10,6 +10,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MenuModal } from '@/components/layout/MenuModal';
+import { ProjectModal, ProjectData } from '@/components/layout/ProjectModal';
 import Spline from '@splinetool/react-spline';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,6 +20,7 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isLightSection, setIsLightSection] = React.useState(false);
+  const [selectedProject, setSelectedProject] = React.useState<ProjectData | null>(null);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -166,6 +168,7 @@ export default function Home() {
         </div>
 
         <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        <ProjectModal isOpen={!!selectedProject} onClose={() => setSelectedProject(null)} project={selectedProject} />
 
         {/* Floating Scrolled Header */}
         <div
@@ -173,10 +176,10 @@ export default function Home() {
             }`}
         >
           <div className="flex items-center pointer-events-auto cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img 
-              src={isLightSection ? "/logoblack.png" : "/logowhite.png"} 
-              alt="Logo" 
-              className={`h-12 md:h-14 w-auto object-contain transition-all duration-300 ${isLightSection ? '' : 'drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]'}`} 
+            <img
+              src={isLightSection ? "/logoblack.png" : "/logowhite.png"}
+              alt="Logo"
+              className={`h-12 md:h-14 w-auto object-contain transition-all duration-300 ${isLightSection ? '' : 'drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]'}`}
             />
           </div>
           <Magnetic strength={30}>
@@ -295,17 +298,32 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-32">
             {[
-              { title: "NeuroSync OS", tag: "AI Platform", desc: "Next-gen operating system for neural-link devices.", num: "01" },
-              { title: "Aether Fashion", tag: "Digital Wear", desc: "Redefining high-fashion in the digital metaverse.", num: "02" }
+              {
+                title: "Bestpass",
+                tag: "Plataforma de Assinatura de Viagens",
+                desc: "Plataforma de assinatura de viagens corporativas e de lazer. Interface imersiva de alta performance desenhada para facilitar reservas e maximizar a conversão de novos usuários.",
+                num: "01",
+                image: "bestpass.png",
+                url: "https://bestpass.com.br"
+              },
+              {
+                title: "Neofluxx",
+                tag: "SaaS Omnichannel + IA",
+                desc: "Plataforma avançada de engajamento e atendimento. Ecossistema unificado conectando WhatsApp, Instagram e e-mail com Agentes de Inteligência Artificial e automação de fluxos.",
+                num: "02",
+                image: "neofluxx.png",
+                url: "https://neofluxx.com/"
+              }
             ].map((item, i) => (
               <div key={i} className="group reveal-up cursor-pointer">
                 <div className="aspect-[16/10] rounded-[40px] bg-zinc-950 border border-white/5 mb-12 overflow-hidden relative">
+
                   <div className="absolute inset-0 bg-gradient-to-br from-red-950/60 to-black opacity-90 group-hover:scale-110 transition-transform duration-[2s] ease-out" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700">
                     <Magnetic strength={30}>
-                      <a href="#">
+                      <button onClick={(e) => { e.preventDefault(); setSelectedProject(item); }}>
                         <Button variant="hape" size="md" icon={<ArrowUpRight className="w-4 h-4" />}>Ver Projeto</Button>
-                      </a>
+                      </button>
                     </Magnetic>
                   </div>
                   {/* Number Overlay */}
