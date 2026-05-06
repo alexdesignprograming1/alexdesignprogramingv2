@@ -54,6 +54,15 @@ export default function Home() {
       opacity: 0.2,
     });
 
+    // Scroll Indicator Animation
+    gsap.to('.scroll-indicator-dot', {
+      y: 12,
+      opacity: 0.2,
+      repeat: -1,
+      duration: 1.5,
+      ease: 'power2.inOut'
+    });
+
   }, { scope: containerRef });
 
   return (
@@ -171,22 +180,24 @@ export default function Home() {
               <div className="w-full h-full bg-white/20 flex items-center justify-center text-[8px] font-bold">ICON</div>
             </div>
           </div>
+
+          {/* Mobile Scroll Indicator - Centered in the middle area */}
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex flex-col items-center gap-2 opacity-30 pointer-events-auto">
+            <div className="w-[14px] h-[22px] rounded-full border border-white/30 relative">
+              <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full animate-bounce" />
+            </div>
+          </div>
         </div>
 
-        {/* Hape Toolbar Center (Hape Style) - Perfectly Centralized */}
+        {/* Scroll to Explore - Premium Centered Stack */}
         <div className="absolute bottom-10 left-0 right-0 z-50 hidden md:flex justify-center items-center corner-ui-item pointer-events-none">
-          <div className="relative flex items-center pointer-events-auto">
-
-            {/* Scroll Tutorial - Offset to the left */}
-            <div className="absolute right-full mr-16 flex items-center gap-4 opacity-40 whitespace-nowrap">
-              <div className="w-8 h-12 rounded-full border-2 border-white/40 relative">
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full animate-bounce" />
-              </div>
-              <p className="text-[9px] font-bold tracking-[0.3em] uppercase font-druk leading-tight">
-                Scroll<br />to explore
-              </p>
+          <div className="flex flex-col items-center gap-3 opacity-40 pointer-events-auto group cursor-pointer">
+            <div className="w-8 h-12 rounded-full border border-white/20 relative overflow-hidden">
+              <div className="scroll-indicator-dot absolute top-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full" />
             </div>
-
+            <p className="text-[9px] font-bold tracking-[0.3em] uppercase font-druk text-center leading-none">
+              Scroll <br /> <span className="opacity-60">to explore</span>
+            </p>
           </div>
         </div>
 
