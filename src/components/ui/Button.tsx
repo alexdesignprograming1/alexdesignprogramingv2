@@ -19,13 +19,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       secondary: 'bg-zinc-800 border-zinc-700 text-zinc-300 hover:text-white hover:border-zinc-500',
       outline: 'bg-transparent border-white/10 text-white hover:border-white/40',
       ghost: 'bg-transparent border-transparent text-zinc-400 hover:text-white',
-      hape: 'group relative h-[56px] min-w-[56px] inline-flex items-center justify-center rounded-full overflow-hidden transition-all duration-300 text-white font-integral uppercase',
+      hape: 'group relative h-[56px] min-w-[56px] inline-flex items-center justify-center rounded-full overflow-hidden transition-all duration-300 text-white font-druk font-bold tracking-tighter uppercase',
     };
 
     const sizes = {
-      sm: 'text-[11px] tracking-[0.2em] font-bold',
-      md: 'text-[13px] tracking-[0.2em] font-bold',
-      lg: 'text-[15px] tracking-[0.3em] font-bold',
+      sm: 'px-1 h-10 text-[12px]',
+      md: 'px-1 h-14 text-[14px]',
+      lg: 'px-1 h-20 text-[18px]',
     };
 
     if (variant === 'hape') {
@@ -37,11 +37,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         >
           {/* Background Layer - subtle glass by default */}
           <div className="absolute inset-0 bg-white/5 border border-white/10 rounded-full z-0" />
-          
+
           {/* Hover Glow Layer */}
           <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-700 ease-[cubic-bezier(0.165,0.84,0.44,1)] origin-center rounded-full z-0" />
-          
-          <div className="relative z-10 flex items-center justify-center gap-4 px-8 h-full w-full">
+
+          <div className="relative z-10 flex items-center justify-center gap-4 px-4 h-full w-full">
             {children && (
               <span className="opacity-100 transition-all duration-500">
                 {children}

@@ -29,18 +29,18 @@ export default function Home() {
       stagger: 0.2,
       ease: 'expo.out'
     }, 0.5)
-    .from('.corner-ui-item', {
-      y: -40,
-      opacity: 0,
-      duration: 1.2,
-      stagger: 0.05
-    }, 1.2)
-    .from('.hero-cta-pill', {
-      scale: 0.8,
-      opacity: 0,
-      duration: 1.5,
-      ease: 'elastic.out(1, 0.5)'
-    }, 1.5);
+      .from('.corner-ui-item', {
+        y: -40,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.05
+      }, 1.2)
+      .from('.hero-cta-pill', {
+        scale: 0.8,
+        opacity: 0,
+        duration: 1.5,
+        ease: 'elastic.out(1, 0.5)'
+      }, 1.5);
 
     // Background Typography Parallax
     gsap.to('.hero-bg-text', {
@@ -60,32 +60,32 @@ export default function Home() {
     <main ref={containerRef} className="relative bg-[#6a0000] hide-scrollbar overflow-hidden font-neue">
       {/* Noise Overlay */}
       <div className="noise-overlay" />
-      
+
       {/* Mesh Background */}
       <div className="fixed inset-0 -z-10 bg-red-mesh" />
 
       {/* Hero Section */}
       <section className="hero-section relative h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6">
-        
+
         {/* Mobile Header (Hape Style) */}
         <div className="absolute top-6 left-6 right-6 z-50 flex md:hidden items-center justify-between pointer-events-none">
           <div className="pointer-events-auto">
             <span className="text-xl font-black font-integral text-white tracking-tighter">ADP®</span>
           </div>
           <div className="flex items-center gap-4 pointer-events-auto">
-             <div className="flex flex-col items-end opacity-40">
-               <div className="flex gap-0.5 h-3 items-end">
-                 {[0.4, 0.8, 0.6, 1].map((h, i) => <div key={i} className="w-[2px] bg-white" style={{ height: `${h * 100}%` }} />)}
-               </div>
-             </div>
-             <button 
+            <div className="flex flex-col items-end opacity-40">
+              <div className="flex gap-0.5 h-3 items-end">
+                {[0.4, 0.8, 0.6, 1].map((h, i) => <div key={i} className="w-[2px] bg-white" style={{ height: `${h * 100}%` }} />)}
+              </div>
+            </div>
+            <button
               onClick={() => setIsMenuOpen(true)}
               className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center"
             >
-               <div className="flex flex-col gap-1">
-                 <div className="w-5 h-[1.5px] bg-black" />
-                 <div className="w-5 h-[1.5px] bg-black" />
-               </div>
+              <div className="flex flex-col gap-1">
+                <div className="w-5 h-[1.5px] bg-black" />
+                <div className="w-5 h-[1.5px] bg-black" />
+              </div>
             </button>
           </div>
         </div>
@@ -98,17 +98,17 @@ export default function Home() {
             </Button>
           </Magnetic>
           <div className="hidden lg:flex flex-col gap-1">
-            <span className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase font-integral">Intelligence Stream</span>
+            <span className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase font-druk">Intelligence Stream</span>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_#ef4444]" />
-              <span className="text-[11px] font-bold tracking-[0.2em] text-white/80 uppercase font-integral">Live: Active</span>
+              <span className="text-[11px] font-bold tracking-[0.2em] text-white/80 uppercase font-druk">Live: Active</span>
             </div>
           </div>
         </div>
 
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 z-50 hidden md:block corner-ui-item">
+        {/* <div className="absolute top-12 left-1/2 -translate-x-1/2 z-50 hidden md:block corner-ui-item">
           <span className="text-[12px] font-bold tracking-[0.4em] opacity-60 font-integral text-white">ALEX DESIGN & PROGRAMMING</span>
-        </div>
+        </div> */}
 
         <div className="absolute top-10 right-10 z-50 hidden md:flex items-center gap-6 corner-ui-item">
           <Magnetic strength={20}>
@@ -117,12 +117,13 @@ export default function Home() {
             </Button>
           </Magnetic>
           <Magnetic strength={30}>
-            <button 
+            <button
               onClick={() => setIsMenuOpen(true)}
-              className="h-14 w-14 flex flex-col gap-1.5 items-center justify-center rounded-full bg-black/40 border border-white/10 hover:bg-white hover:text-black transition-all duration-500 group"
+              className="h-14 w-14 flex flex-col gap-1.5 items-center justify-center rounded-full bg-black/80 border border-white/10 hover:bg-white hover:text-black transition-all duration-500 group"
             >
-               <div className="w-6 h-[1.5px] bg-white group-hover:bg-black transition-colors" />
-               <div className="w-6 h-[1.5px] bg-white group-hover:bg-black transition-colors" />
+              <div className="w-5 h-[1.5px] bg-white group-hover:bg-black transition-colors" />
+              <div className="w-5 h-[1.5px] bg-white group-hover:bg-black transition-colors" />
+              <div className="w-5 h-[1.5px] bg-white group-hover:bg-black transition-colors" />
             </button>
           </Magnetic>
         </div>
@@ -136,81 +137,100 @@ export default function Home() {
 
         {/* Large Background Typography */}
         <div className="hero-bg-text absolute inset-0 z-0 flex flex-col items-center justify-center select-none pointer-events-none opacity-80">
-          <h1 className="text-[35vw] md:text-[25vw] font-black tracking-[-0.08em] leading-[0.75] text-black/90 font-integral flex flex-col items-center">
-            <span className="inline-block translate-y-[-5%]">ALEX</span>
-            <span className="inline-block">AGENCY</span>
+          <h1 className="text-[35vw] md:text-[8vw] font-black tracking-[-0.08em] leading-[0.75] text-black/90 font-integral flex flex-col items-center">
+            <span className="inline-block translate-y-[-5%]">Alex Design Programing</span>
           </h1>
-          <div className="mt-8 text-center md:hidden px-10">
-            <p className="text-[10px] font-bold tracking-[0.3em] opacity-40 uppercase font-integral">Fully 3D and ready to redefine digital fashion</p>
-          </div>
+          {/* <div className="mt-8 text-center md:hidden px-10">
+            <p className="text-[10px] font-bold tracking-[0.3em] opacity-40 uppercase font-druk">Fully 3D and ready to redefine digital fashion</p>
+          </div> */}
         </div>
 
         {/* Desktop Bottom UI */}
         <div className="absolute bottom-10 left-10 z-50 hidden md:flex items-center gap-4 corner-ui-item">
-           <div className="flex flex-col">
-             <span className="text-hape-label opacity-40 mb-2">Our Strategy</span>
-             <Magnetic strength={15}>
-               <div className="flex items-center gap-3 group cursor-pointer">
-                 <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white group-hover:text-red-400 transition-colors font-integral">Roadmap</span>
-                 <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
-                   <ArrowUpRight className="w-4 h-4" />
-                 </div>
-               </div>
-             </Magnetic>
-           </div>
+          <div className="flex flex-col">
+            <span className="text-hape-label opacity-40 mb-2">Our Strategy</span>
+            <Magnetic strength={15}>
+              <div className="flex items-center gap-3 group cursor-pointer">
+                <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white group-hover:text-red-400 transition-colors font-druk">Roadmap</span>
+                <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
+                  <ArrowUpRight className="w-4 h-4" />
+                </div>
+              </div>
+            </Magnetic>
+          </div>
         </div>
 
         {/* Mobile Bottom UI (Hape Style) */}
         <div className="absolute bottom-10 left-8 right-8 z-50 md:hidden flex items-end justify-between pointer-events-none">
           <div className="flex gap-4 pointer-events-auto">
-             <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center">
-               <Cpu className="w-5 h-5 text-white/60" />
-             </div>
-             <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center overflow-hidden">
-               <div className="w-full h-full bg-white/20 flex items-center justify-center text-[8px] font-bold">ICON</div>
-             </div>
+            <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center">
+              <Cpu className="w-5 h-5 text-white/60" />
+            </div>
+            <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center overflow-hidden">
+              <div className="w-full h-full bg-white/20 flex items-center justify-center text-[8px] font-bold">ICON</div>
+            </div>
           </div>
-          
-          <button 
+
+          <button
             onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-            className="pointer-events-auto h-14 px-10 rounded-full bg-black text-white border border-white/10 font-integral tracking-[0.3em] text-[11px] uppercase shadow-2xl flex items-center gap-4"
+            className="pointer-events-auto h-14 px-10 rounded-full bg-black text-white border border-white/10 font-druk font-bold tracking-tighter text-[11px] uppercase shadow-2xl flex items-center gap-4"
           >
             <span>HAPEBAR</span>
           </button>
         </div>
 
-        {/* Desktop Main CTA: HAPEBAR */}
-        <div className="absolute bottom-10 left-0 right-0 z-50 hidden md:flex justify-center corner-ui-item">
-          <Magnetic strength={50}>
-            <button 
-              onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative h-20 px-16 rounded-full bg-black text-white border border-white/10 hover:border-white/40 transition-all duration-700 font-integral tracking-[0.4em] text-[13px] uppercase overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]"
-            >
-              {/* Expanding Background */}
-              <div className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] origin-left" />
-              
-              <div className="relative z-10 flex items-center gap-6 group-hover:text-black transition-colors duration-500">
-                <div className="w-2 h-2 rounded-full bg-red-600 group-hover:bg-red-500 shadow-[0_0_10px_#ef4444]" />
-                <span>HAPEBAR / ENTER</span>
-                <div className="w-2 h-2 rounded-full bg-red-600 group-hover:bg-red-500 shadow-[0_0_10px_#ef4444]" />
+        {/* Hape Toolbar Center (Hape Style) - Perfectly Centralized */}
+        <div className="absolute bottom-10 left-0 right-0 z-50 hidden md:flex justify-center items-center corner-ui-item pointer-events-none">
+          <div className="relative flex items-center pointer-events-auto">
+
+            {/* Scroll Tutorial - Offset to the left */}
+            <div className="absolute right-full mr-16 flex items-center gap-4 opacity-40 whitespace-nowrap">
+              <div className="w-8 h-12 rounded-full border-2 border-white/40 relative">
+                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full animate-bounce" />
               </div>
-            </button>
-          </Magnetic>
+              <p className="text-[9px] font-bold tracking-[0.3em] uppercase font-druk leading-tight">
+                Scroll<br />to explore
+              </p>
+            </div>
+
+            {/* Hapebar Toolbar */}
+            <div className="flex items-center gap-8">
+              <p className="text-[10px] font-bold tracking-[0.4em] uppercase font-druk opacity-30">Press</p>
+
+              <Magnetic strength={50}>
+                <button
+                  onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="group relative h-16 px-12 rounded-full bg-black text-white border border-white/10 hover:border-white/40 transition-all duration-700 font-druk font-bold tracking-tighter text-[13px] uppercase overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]"
+                >
+                  {/* Progress Fill Effect */}
+                  <div className="absolute inset-0 bg-white translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+
+                  <div className="relative z-10 flex items-center gap-4 group-hover:text-black transition-colors duration-500">
+                    <div className="w-1.5 h-1.5 rounded-full bg-red-600 group-hover:bg-black transition-colors" />
+                    <span>HAPEBAR</span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-red-600 group-hover:bg-black transition-colors" />
+                  </div>
+                </button>
+              </Magnetic>
+
+              <p className="text-[10px] font-bold tracking-[0.4em] uppercase font-druk opacity-30">to Enter</p>
+            </div>
+          </div>
         </div>
 
         <div className="absolute bottom-10 right-10 z-50 flex flex-col items-end corner-ui-item">
-           <span className="text-hape-label opacity-40 mb-2 text-right">Atmosphere</span>
-           <div className="flex items-center gap-6">
-             <div className="flex flex-col items-end">
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 font-druk">Index</span>
-                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white hover:text-red-400 transition-colors cursor-pointer font-druk">Fashion 8K</span>
-             </div>
-             <Magnetic strength={20}>
-               <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer">
-                 <Volume2 className="w-4 h-4" />
-               </div>
-             </Magnetic>
-           </div>
+          <span className="text-hape-label opacity-40 mb-2 text-right">Atmosphere</span>
+          <div className="flex items-center gap-6">
+            <div className="flex flex-col items-end">
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 font-druk">Index</span>
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white hover:text-red-400 transition-colors cursor-pointer font-druk">Fashion 8K</span>
+            </div>
+            <Magnetic strength={20}>
+              <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer">
+                <Volume2 className="w-4 h-4" />
+              </div>
+            </Magnetic>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
@@ -221,7 +241,7 @@ export default function Home() {
 
       {/* Immersive Scroll Content */}
       <div className="relative z-30 bg-black/80 backdrop-blur-[100px] border-t border-white/5">
-        
+
         {/* Work Section */}
         <section id="work" className="py-64 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="flex flex-col mb-40 reveal-up">
@@ -262,7 +282,7 @@ export default function Home() {
         <section id="services" className="py-64 bg-white text-black relative overflow-hidden">
           {/* Subtle noise on white bg */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.png')] bg-repeat" />
-          
+
           <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start">
               <div className="reveal-up sticky top-32">
@@ -288,7 +308,7 @@ export default function Home() {
                       <h5 className="text-4xl font-black font-integral uppercase tracking-tighter group-hover:translate-x-2 transition-transform duration-500">
                         {s.title}
                       </h5>
-                      <span className="text-red-600 font-druk text-sm">0{i+1}</span>
+                      <span className="text-red-600 font-druk text-sm">0{i + 1}</span>
                     </div>
                     <p className="text-zinc-600 text-xl leading-relaxed font-neue max-w-lg">{s.desc}</p>
                   </div>
@@ -300,24 +320,24 @@ export default function Home() {
 
         {/* Footer / Contact */}
         <footer className="py-48 px-6 relative overflow-hidden flex flex-col items-center">
-           <div className="reveal-up relative z-10 w-full">
-             <span className="text-hape-label opacity-40 mb-16 block text-center font-druk">Available for global projects</span>
-             <h2 className="text-[14vw] font-black tracking-[-0.06em] leading-none mb-20 text-white font-integral text-center uppercase">
-               LET&apos;S <br /> CONNECT.
-             </h2>
-             <div className="flex flex-wrap justify-center gap-x-16 gap-y-8">
-               {['Instagram', 'Twitter', 'LinkedIn', 'Behance'].map((s) => (
-                 <Magnetic key={s} strength={15}>
-                   <span className="text-hape-label hover:text-red-500 transition-colors cursor-pointer font-druk text-xs">{s}</span>
-                 </Magnetic>
-               ))}
-             </div>
-             <div className="mt-40 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-7xl mx-auto px-6 opacity-40">
-               <span className="text-[10px] font-bold tracking-widest uppercase">© 2025 ADP AGENCY</span>
-               <span className="text-[10px] font-bold tracking-widest uppercase">London / São Paulo / Tokyo</span>
-               <span className="text-[10px] font-bold tracking-widest uppercase">Pixel Perfect Logic</span>
-             </div>
-           </div>
+          <div className="reveal-up relative z-10 w-full">
+            <span className="text-hape-label opacity-40 mb-16 block text-center font-druk">Available for global projects</span>
+            <h2 className="text-[14vw] font-black tracking-[-0.06em] leading-none mb-20 text-white font-integral text-center uppercase">
+              LET&apos;S <br /> CONNECT.
+            </h2>
+            <div className="flex flex-wrap justify-center gap-x-16 gap-y-8">
+              {['Instagram', 'Twitter', 'LinkedIn', 'Behance'].map((s) => (
+                <Magnetic key={s} strength={15}>
+                  <span className="text-hape-label hover:text-red-500 transition-colors cursor-pointer font-druk text-xs">{s}</span>
+                </Magnetic>
+              ))}
+            </div>
+            <div className="mt-40 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-7xl mx-auto px-6 opacity-40">
+              <span className="text-[10px] font-bold tracking-widest uppercase">© 2025 ADP AGENCY</span>
+              <span className="text-[10px] font-bold tracking-widest uppercase">London / São Paulo / Tokyo</span>
+              <span className="text-[10px] font-bold tracking-widest uppercase">Pixel Perfect Logic</span>
+            </div>
+          </div>
         </footer>
       </div>
     </main>

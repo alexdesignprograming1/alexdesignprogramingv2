@@ -78,7 +78,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
         </div>
         
         <div className="flex items-center gap-6">
-          <span className="text-[12px] font-bold tracking-[0.4em] opacity-40 uppercase font-integral">Close Menu</span>
+          <span className="text-[12px] font-bold tracking-[0.4em] opacity-40 uppercase font-druk">Close Menu</span>
           <Magnetic strength={30}>
             <button
               onClick={onClose}
@@ -112,7 +112,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
             'PARTNERSHIPS'
           ].map((link) => (
             <div key={link} className="menu-sub-link flex items-center justify-end gap-4 group cursor-pointer">
-              <span className="text-[12px] font-bold tracking-[0.3em] opacity-40 group-hover:opacity-100 transition-opacity font-integral uppercase">
+              <span className="text-[12px] font-bold tracking-tighter opacity-40 group-hover:opacity-100 transition-opacity font-druk uppercase">
                 {link}
               </span>
               <ArrowUpRight className="w-4 h-4 opacity-20 group-hover:opacity-100 transition-opacity" />
@@ -130,10 +130,10 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
         </Magnetic>
 
         <div className="flex gap-12 mt-10 md:mt-0">
-          <span className="text-[11px] font-bold tracking-[0.3em] opacity-40 hover:opacity-100 transition-opacity cursor-pointer font-integral uppercase">
+          <span className="text-[11px] font-bold tracking-[0.3em] opacity-40 hover:opacity-100 transition-opacity cursor-pointer font-druk uppercase">
             Terms & Conditions
           </span>
-          <span className="text-[11px] font-bold tracking-[0.3em] opacity-40 hover:opacity-100 transition-opacity cursor-pointer font-integral uppercase">
+          <span className="text-[11px] font-bold tracking-[0.3em] opacity-40 hover:opacity-100 transition-opacity cursor-pointer font-druk uppercase">
             Privacy Policy
           </span>
         </div>
