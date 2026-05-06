@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Magnetic } from '@/components/ui/Magnetic';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { NeuralBackground } from '@/components/ui/NeuralBackground';
-import { Play, MoreHorizontal, ArrowUpRight, Volume2, ArrowRight, ArrowDown, Cpu, Zap, Globe, Shield, BarChart, MessageSquare, Layers } from 'lucide-react';
+import { Play, MoreHorizontal, ArrowUpRight, Volume2, ArrowRight, ArrowDown, Cpu, Zap, Globe, Shield, BarChart, MessageSquare, Layers, Pointer } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -248,10 +248,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Mobile Scroll Indicator - Centered in the middle area */}
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex flex-col items-center gap-2 opacity-30 pointer-events-auto">
-            <div className="w-[16px] h-[26px] rounded-full border border-white/30 relative overflow-hidden">
-              <div className="animate-bounce absolute top-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full" />
+          {/* Mobile Touch Indicator - Centered in the middle area */}
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 flex flex-col items-center gap-2 opacity-50 pointer-events-auto">
+            <div className="animate-bounce flex flex-col items-center gap-1">
+              <Pointer className="w-5 h-5 text-white" />
             </div>
           </div>
         </div>
