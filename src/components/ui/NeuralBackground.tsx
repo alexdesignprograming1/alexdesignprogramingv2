@@ -23,32 +23,46 @@ export const NeuralBackground = () => {
       vx: number;
       vy: number;
       size: number;
+      pulse: number;
+      pulseSpeed: number;
 
       constructor() {
         this.x = Math.random() * canvas!.width;
         this.y = Math.random() * canvas!.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
         this.size = Math.random() * 1.5 + 0.5;
+        this.pulse = Math.random() * Math.PI;
+        this.pulseSpeed = 0.02 + Math.random() * 0.03;
       }
 
       update() {
         this.x += this.vx;
         this.y += this.vy;
+        this.pulse += this.pulseSpeed;
 
         if (this.x < 0 || this.x > canvas!.width) this.vx *= -1;
         if (this.y < 0 || this.y > canvas!.height) this.vy *= -1;
       }
 
       draw() {
+        const opacity = 0.1 + (Math.sin(this.pulse) + 1) * 0.1;
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx!.fillStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx!.fillStyle = `rgba(255, 255, 255, ${opacity})`;
         ctx!.fill();
+        
+        if (Math.random() > 0.99) {
+          ctx!.beginPath();
+          ctx!.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+          ctx!.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+          ctx!.stroke();
+        }
       }
     }
 
     const init = () => {
+      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       particles = [];
@@ -71,12 +85,23 @@ export const NeuralBackground = () => {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < connectionDistance) {
+            const opacity = (1 - distance / connectionDistance) * 0.15;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - distance / connectionDistance)})`;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
+            
+            // Random Data Pulse on connection
+            if (Math.random() > 0.995) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = 'rgba(255, 0, 0, 0.4)';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
           }
         }
       });

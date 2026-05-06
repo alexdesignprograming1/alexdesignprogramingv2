@@ -19,7 +19,7 @@ export const Navbar = () => {
         <div className="flex items-center px-4 mr-2 border-r border-white/10">
           <span className="text-white font-semibold tracking-tighter text-lg">ALEX</span>
         </div>
-        
+
         <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link

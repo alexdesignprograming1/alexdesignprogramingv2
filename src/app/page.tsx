@@ -5,269 +5,321 @@ import { Button } from '@/components/ui/Button';
 import { Magnetic } from '@/components/ui/Magnetic';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { NeuralBackground } from '@/components/ui/NeuralBackground';
-import { ArrowRight, ArrowDown, Cpu, Zap, Globe, Shield, BarChart, MessageSquare, Layers } from 'lucide-react';
+import { Play, MoreHorizontal, ArrowUpRight, Volume2, ArrowRight, ArrowDown, Cpu, Zap, Globe, Shield, BarChart, MessageSquare, Layers } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MenuModal } from '@/components/layout/MenuModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   useGSAP(() => {
-    // Entrance Animation
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
-    tl.from('.hero-tag', {
-      y: 20,
+    // Entrance sequence
+    tl.from('.hero-title span', {
+      y: 200,
+      rotateX: -45,
       opacity: 0,
-      duration: 1,
-    }, 0.5)
-    .from('.hero-title span', {
-      y: 100,
-      opacity: 0,
-      duration: 1.5,
-      stagger: 0.1,
-      skewY: 7,
+      duration: 2,
+      stagger: 0.2,
       ease: 'expo.out'
-    }, 0.7)
-    .from('.hero-p', {
-      y: 20,
+    }, 0.5)
+    .from('.corner-ui-item', {
+      y: -40,
       opacity: 0,
-      duration: 1,
+      duration: 1.2,
+      stagger: 0.05
     }, 1.2)
-    .from('.hero-cta', {
+    .from('.hero-cta-pill', {
       scale: 0.8,
       opacity: 0,
-      duration: 1,
-    }, 1.4)
-    .from('.scroll-indicator', {
-      y: -20,
-      opacity: 0,
-      duration: 1,
-      repeat: -1,
-      yoyo: true
-    }, 2);
+      duration: 1.5,
+      ease: 'elastic.out(1, 0.5)'
+    }, 1.5);
 
-    // Scroll Effects for Hero
-    gsap.to('.hero-bg', {
+    // Background Typography Parallax
+    gsap.to('.hero-bg-text', {
       scrollTrigger: {
         trigger: '.hero-section',
         start: 'top top',
         end: 'bottom top',
         scrub: true,
       },
-      scale: 1.2,
-      y: 100,
+      y: -200,
       opacity: 0.2,
-    });
-
-    gsap.to('.hero-content-inner', {
-      scrollTrigger: {
-        trigger: '.hero-section',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-      y: -100,
-      opacity: 0,
-    });
-
-    // Fade-in animations for all sections
-    const fadeElements = gsap.utils.toArray('.scroll-fade');
-    fadeElements.forEach((el: any) => {
-      gsap.from(el, {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 90%',
-          toggleActions: 'play none none none'
-        },
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-      });
     });
 
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="relative bg-black hide-scrollbar">
-      {/* Background Mesh */}
-      <div className="hero-bg fixed inset-0 -z-10 bg-mesh opacity-40 transition-opacity duration-1000" />
+    <main ref={containerRef} className="relative bg-[#6a0000] hide-scrollbar overflow-hidden font-neue">
+      {/* Noise Overlay */}
+      <div className="noise-overlay" />
       
-      {/* Immersive Hero Section */}
-      <section className="hero-section relative h-screen w-full flex items-center justify-center overflow-hidden px-6">
-        <NeuralBackground />
-        <div className="hero-content-inner text-center z-10">
-          <div className="hero-tag inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-500">Engineered for the Future</span>
+      {/* Mesh Background */}
+      <div className="fixed inset-0 -z-10 bg-red-mesh" />
+
+      {/* Hero Section */}
+      <section className="hero-section relative h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6">
+        
+        {/* Mobile Header (Hape Style) */}
+        <div className="absolute top-6 left-6 right-6 z-50 flex md:hidden items-center justify-between pointer-events-none">
+          <div className="pointer-events-auto">
+            <span className="text-xl font-black font-integral text-white tracking-tighter">ADP®</span>
+          </div>
+          <div className="flex items-center gap-4 pointer-events-auto">
+             <div className="flex flex-col items-end opacity-40">
+               <div className="flex gap-0.5 h-3 items-end">
+                 {[0.4, 0.8, 0.6, 1].map((h, i) => <div key={i} className="w-[2px] bg-white" style={{ height: `${h * 100}%` }} />)}
+               </div>
+             </div>
+             <button 
+              onClick={() => setIsMenuOpen(true)}
+              className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center"
+            >
+               <div className="flex flex-col gap-1">
+                 <div className="w-5 h-[1.5px] bg-black" />
+                 <div className="w-5 h-[1.5px] bg-black" />
+               </div>
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop Header */}
+        <div className="absolute top-10 left-10 z-50 hidden md:flex items-center gap-6 corner-ui-item">
+          <Magnetic strength={20}>
+            <Button variant="hape" size="md" icon={<Play className="w-4 h-4 fill-current" />}>
+              Play Trailer
+            </Button>
+          </Magnetic>
+          <div className="hidden lg:flex flex-col gap-1">
+            <span className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase font-integral">Intelligence Stream</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_#ef4444]" />
+              <span className="text-[11px] font-bold tracking-[0.2em] text-white/80 uppercase font-integral">Live: Active</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute top-12 left-1/2 -translate-x-1/2 z-50 hidden md:block corner-ui-item">
+          <span className="text-[12px] font-bold tracking-[0.4em] opacity-60 font-integral text-white">ALEX DESIGN & PROGRAMMING</span>
+        </div>
+
+        <div className="absolute top-10 right-10 z-50 hidden md:flex items-center gap-6 corner-ui-item">
+          <Magnetic strength={20}>
+            <Button variant="hape" size="md" icon={<MoreHorizontal className="w-5 h-5" />}>
+              Marketplace
+            </Button>
+          </Magnetic>
+          <Magnetic strength={30}>
+            <button 
+              onClick={() => setIsMenuOpen(true)}
+              className="h-14 w-14 flex flex-col gap-1.5 items-center justify-center rounded-full bg-black/40 border border-white/10 hover:bg-white hover:text-black transition-all duration-500 group"
+            >
+               <div className="w-6 h-[1.5px] bg-white group-hover:bg-black transition-colors" />
+               <div className="w-6 h-[1.5px] bg-white group-hover:bg-black transition-colors" />
+            </button>
+          </Magnetic>
+        </div>
+
+        <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+
+        {/* Neural Network Backdrop */}
+        <div className="absolute inset-0 z-0 opacity-30">
+          <NeuralBackground />
+        </div>
+
+        {/* Large Background Typography */}
+        <div className="hero-bg-text absolute inset-0 z-0 flex flex-col items-center justify-center select-none pointer-events-none opacity-80">
+          <h1 className="text-[35vw] md:text-[25vw] font-black tracking-[-0.08em] leading-[0.75] text-black/90 font-integral flex flex-col items-center">
+            <span className="inline-block translate-y-[-5%]">ALEX</span>
+            <span className="inline-block">AGENCY</span>
+          </h1>
+          <div className="mt-8 text-center md:hidden px-10">
+            <p className="text-[10px] font-bold tracking-[0.3em] opacity-40 uppercase font-integral">Fully 3D and ready to redefine digital fashion</p>
+          </div>
+        </div>
+
+        {/* Desktop Bottom UI */}
+        <div className="absolute bottom-10 left-10 z-50 hidden md:flex items-center gap-4 corner-ui-item">
+           <div className="flex flex-col">
+             <span className="text-hape-label opacity-40 mb-2">Our Strategy</span>
+             <Magnetic strength={15}>
+               <div className="flex items-center gap-3 group cursor-pointer">
+                 <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white group-hover:text-red-400 transition-colors font-integral">Roadmap</span>
+                 <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
+                   <ArrowUpRight className="w-4 h-4" />
+                 </div>
+               </div>
+             </Magnetic>
+           </div>
+        </div>
+
+        {/* Mobile Bottom UI (Hape Style) */}
+        <div className="absolute bottom-10 left-8 right-8 z-50 md:hidden flex items-end justify-between pointer-events-none">
+          <div className="flex gap-4 pointer-events-auto">
+             <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center">
+               <Cpu className="w-5 h-5 text-white/60" />
+             </div>
+             <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center overflow-hidden">
+               <div className="w-full h-full bg-white/20 flex items-center justify-center text-[8px] font-bold">ICON</div>
+             </div>
           </div>
           
-          <h1 className="hero-title text-[12vw] md:text-[8vw] font-bold tracking-tighter leading-[0.9] mb-12 overflow-hidden py-4">
-            <span className="inline-block">ALEX</span> <br />
-            <span className="inline-block text-zinc-600">DESIGN</span>
-          </h1>
+          <button 
+            onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+            className="pointer-events-auto h-14 px-10 rounded-full bg-black text-white border border-white/10 font-integral tracking-[0.3em] text-[11px] uppercase shadow-2xl flex items-center gap-4"
+          >
+            <span>HAPEBAR</span>
+          </button>
+        </div>
 
-          <div className="hero-p-container overflow-hidden mb-12">
-            <p className="hero-p text-lg md:text-xl text-zinc-400 max-w-xl mx-auto leading-relaxed">
-              Pioneering the intersection of artificial intelligence and avant-garde digital design.
-            </p>
-          </div>
+        {/* Desktop Main CTA: HAPEBAR */}
+        <div className="absolute bottom-10 left-0 right-0 z-50 hidden md:flex justify-center corner-ui-item">
+          <Magnetic strength={50}>
+            <button 
+              onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+              className="group relative h-20 px-16 rounded-full bg-black text-white border border-white/10 hover:border-white/40 transition-all duration-700 font-integral tracking-[0.4em] text-[13px] uppercase overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]"
+            >
+              {/* Expanding Background */}
+              <div className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] origin-left" />
+              
+              <div className="relative z-10 flex items-center gap-6 group-hover:text-black transition-colors duration-500">
+                <div className="w-2 h-2 rounded-full bg-red-600 group-hover:bg-red-500 shadow-[0_0_10px_#ef4444]" />
+                <span>HAPEBAR / ENTER</span>
+                <div className="w-2 h-2 rounded-full bg-red-600 group-hover:bg-red-500 shadow-[0_0_10px_#ef4444]" />
+              </div>
+            </button>
+          </Magnetic>
+        </div>
 
-          <div className="hero-cta flex justify-center">
-            <Magnetic strength={50}>
-              <Button 
-                onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-                size="lg" 
-                className="h-24 w-24 md:h-32 md:w-32 rounded-full bg-white text-black hover:scale-110 transition-transform duration-500 text-sm font-bold flex flex-col gap-1 items-center justify-center group"
-              >
-                <span className="group-hover:-translate-y-1 transition-transform">START</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Magnetic>
-          </div>
+        <div className="absolute bottom-10 right-10 z-50 flex flex-col items-end corner-ui-item">
+           <span className="text-hape-label opacity-40 mb-2 text-right">Atmosphere</span>
+           <div className="flex items-center gap-6">
+             <div className="flex flex-col items-end">
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 font-druk">Index</span>
+                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white hover:text-red-400 transition-colors cursor-pointer font-druk">Fashion 8K</span>
+             </div>
+             <Magnetic strength={20}>
+               <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer">
+                 <Volume2 className="w-4 h-4" />
+               </div>
+             </Magnetic>
+           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="scroll-indicator absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-          <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Scroll</span>
-          <ArrowDown className="w-4 h-4 text-zinc-500" />
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 opacity-30">
+          <div className="w-[1px] h-10 bg-gradient-to-b from-white via-white to-transparent" />
         </div>
       </section>
 
-      {/* Work Section */}
-      <section id="work" className="py-32 px-6 md:px-12 max-w-7xl mx-auto relative z-20">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 scroll-fade">
-          <div className="max-w-xl">
-            <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-zinc-600 mb-6">Featured Work</h2>
-            <h3 className="text-4xl md:text-6xl font-semibold leading-tight">High-impact automation for visionary brands.</h3>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            { title: "Nexus E-Commerce Sync", desc: "Automated inventory and order routing system reducing manual processing time by 85%." },
-            { title: "Lumina AI Copilot", desc: "Custom trained LLM integration for an enterprise SaaS platform, providing contextual user assistance." },
-            { title: "Quantum Data Pipeline", desc: "Real-time predictive analytics dashboard combining multiple unstructured data sources." },
-            { title: "Aether Lead Gen", desc: "Multi-channel autonomous lead qualification agent increasing conversion rates by 40%." }
-          ].map((item, i) => (
-            <GlassCard key={i} className="group scroll-fade p-8">
-              <div className="aspect-[16/10] rounded-xl bg-zinc-900 border border-white/5 mb-8 overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 to-black opacity-50 group-hover:scale-110 transition-transform duration-1000" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                   <Button variant="outline" className="bg-white/10 backdrop-blur-md border-white/20">View Case Study</Button>
-                </div>
-              </div>
-              <h4 className="text-2xl font-semibold mb-3 group-hover:text-white transition-colors">{item.title}</h4>
-              <p className="text-zinc-500 leading-relaxed">{item.desc}</p>
-            </GlassCard>
-          ))}
-        </div>
-      </section>
-
-      {/* Workflow Showcase */}
-      <section id="stack" className="py-32 px-6 md:px-12 bg-zinc-950/30 relative border-y border-white/5 z-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-20 scroll-fade text-center md:text-left">
-            <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-zinc-600 mb-6">Workflow Showcase</h2>
-            <h3 className="text-4xl md:text-5xl font-semibold">Transforming Manual into Automatic</h3>
+      {/* Immersive Scroll Content */}
+      <div className="relative z-30 bg-black/80 backdrop-blur-[100px] border-t border-white/5">
+        
+        {/* Work Section */}
+        <section id="work" className="py-64 px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="flex flex-col mb-40 reveal-up">
+            <span className="text-hape-label text-red-500 mb-10 block font-druk">Selected Works 2024—2025</span>
+            <h2 className="text-[9vw] font-black tracking-[-0.05em] leading-[0.85] text-white font-integral uppercase">
+              CRAFTING <br /> THE FUTURE.
+            </h2>
           </div>
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-32">
             {[
-              {
-                title: "Automated Content Engine",
-                before: "Manual topic research, drafting, editing, and scheduling taking 15+ hours weekly.",
-                after: "AI generates topic clusters, drafts variations, and auto-schedules to platforms.",
-                metric: "13 hrs/week saved"
-              },
-              {
-                title: "Intelligent Lead Gen Bot",
-                before: "Static contact forms leading to high drop-off rates and unqualified sales calls.",
-                after: "Conversational AI qualifies leads 24/7, scores intent, and books calendar slots directly.",
-                metric: "+45% Conversion Lift"
-              },
-              {
-                title: "Client Onboarding Sync",
-                before: "Manual data entry across CRM, billing, and project management tools.",
-                after: "Single form submission triggers automated account creation across 5 platforms instantly.",
-                metric: "0% Errors"
-              }
+              { title: "NeuroSync OS", tag: "AI Platform", desc: "Next-gen operating system for neural-link devices.", num: "01" },
+              { title: "Aether Fashion", tag: "Digital Wear", desc: "Redefining high-fashion in the digital metaverse.", num: "02" }
             ].map((item, i) => (
-              <GlassCard key={i} className="flex flex-col md:flex-row gap-12 items-center scroll-fade p-10 hover:border-white/20">
-                <div className="flex-1">
-                  <h4 className="text-3xl font-semibold mb-10">{item.title}</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-                    <div className="relative pl-6 border-l border-red-500/20">
-                      <span className="text-[10px] font-bold tracking-widest uppercase text-red-500/40 mb-3 block">Process Before</span>
-                      <p className="text-zinc-500 text-sm leading-relaxed">{item.before}</p>
-                    </div>
-                    <div className="relative pl-6 border-l border-emerald-500/20">
-                      <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-500/60 mb-3 block">Intelligent After</span>
-                      <p className="text-zinc-300 text-sm leading-relaxed">{item.after}</p>
-                    </div>
+              <div key={i} className="group reveal-up cursor-pointer">
+                <div className="aspect-[16/10] rounded-[40px] bg-zinc-950 border border-white/5 mb-12 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-950/60 to-black opacity-90 group-hover:scale-110 transition-transform duration-[2s] ease-out" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700">
+                    <Magnetic strength={30}>
+                      <Button variant="hape" size="md" icon={<ArrowUpRight className="w-4 h-4" />}>Explore Case</Button>
+                    </Magnetic>
                   </div>
+                  {/* Number Overlay */}
+                  <span className="absolute top-8 left-8 text-[40px] font-black text-white/5 font-integral">{item.num}</span>
                 </div>
-                <div className="w-full md:w-56 p-8 rounded-2xl bg-white/5 border border-white/10 text-center backdrop-blur-xl">
-                  <span className="text-3xl font-bold text-white block mb-2">{item.metric.split(' ')[0]}</span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold leading-none">{item.metric.split(' ').slice(1).join(' ')}</span>
+                <div className="flex items-center gap-6 mb-6">
+                  <span className="text-hape-label text-red-600 font-druk">{item.tag}</span>
+                  <div className="h-[1px] flex-grow bg-white/10" />
                 </div>
-              </GlassCard>
+                <h4 className="text-4xl font-bold mb-6 text-white group-hover:translate-x-3 transition-transform duration-700 font-integral uppercase tracking-tight">{item.title}</h4>
+                <p className="text-zinc-500 leading-relaxed max-w-md text-lg font-neue">{item.desc}</p>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-32 px-6 md:px-12 max-w-7xl mx-auto relative z-20">
-        <div className="text-center mb-20 scroll-fade">
-          <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-zinc-600 mb-6">Core Expertise</h2>
-          <h3 className="text-4xl md:text-5xl font-semibold">Bespoke AI designed for scale.</h3>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            { title: "Custom LLM Integration", desc: "Embed language models tailored to your specific business data and domain expertise.", icon: Cpu },
-            { title: "Voice AI Agents", desc: "Deploy conversational voice bots for customer support, inbound sales, and interactive experiences.", icon: MessageSquare },
-            { title: "Predictive Analytics", desc: "Transform raw data into actionable foresight with custom-built visual analytics and forecasting.", icon: BarChart },
-            { title: "Workflow Automation", desc: "Connect disparate SaaS tools into seamless, zero-touch operational pipelines.", icon: Zap },
-            { title: "Generative Media", desc: "Automate the creation of high-quality images, video, and audio assets for marketing.", icon: Layers },
-            { title: "AI Security", desc: "Ensure your AI implementations are secure, private, and compliant with industry regulations.", icon: Shield },
-          ].map((service, i) => (
-            <GlassCard key={i} className="scroll-fade group p-10">
-              <service.icon className="w-12 h-12 text-zinc-500 group-hover:text-white mb-8 transition-colors duration-500" strokeWidth={1} />
-              <h4 className="text-xl font-semibold mb-4 group-hover:text-white transition-colors">{service.title}</h4>
-              <p className="text-zinc-500 text-sm leading-relaxed group-hover:text-zinc-400 transition-colors">{service.desc}</p>
-            </GlassCard>
-          ))}
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-20 px-6 md:px-12 border-t border-white/5 relative z-20">
-        <div className="max-w-7xl mx-auto">
-           <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-12">
-            <div className="flex items-center gap-3">
-              <span className="text-white font-bold tracking-tighter text-3xl">ALEX</span>
-              <span className="text-zinc-700 font-medium">/</span>
-              <span className="text-zinc-600 text-xs tracking-widest uppercase font-bold">Engineered for the Future</span>
-            </div>
-            
-            <div className="flex gap-10">
-              {['Privacy', 'Terms', 'LinkedIn', 'GitHub'].map((item) => (
-                <a key={item} href="#" className="text-zinc-600 hover:text-white text-[10px] transition-colors uppercase tracking-[0.3em] font-bold">
-                  {item}
-                </a>
-              ))}
+        {/* Services & Strategy */}
+        <section id="services" className="py-64 bg-white text-black relative overflow-hidden">
+          {/* Subtle noise on white bg */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.png')] bg-repeat" />
+          
+          <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start">
+              <div className="reveal-up sticky top-32">
+                <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-red-600 mb-10 block font-druk">Agency DNA</span>
+                <h2 className="text-[7vw] font-black tracking-[-0.04em] leading-[0.85] mb-14 font-integral uppercase">
+                  WE BUILD <br /> WHAT OTHERS <br /> DREAM.
+                </h2>
+                <Magnetic strength={20}>
+                  <Button variant="hape" size="lg" className="bg-black text-white hover:bg-zinc-900 border-none px-10 h-16" icon={<ArrowRight className="w-5 h-5" />}>
+                    View Capabilities
+                  </Button>
+                </Magnetic>
+              </div>
+              <div className="grid grid-cols-1 gap-16 reveal-up pt-10">
+                {[
+                  { title: "Generative AI", desc: "Custom LLMs and image generation pipelines tailored for high-end brand experiences." },
+                  { title: "Creative Dev", desc: "Award-winning motion design and immersive WebGL environments that captivate." },
+                  { title: "Digital Fashion", desc: "Bridging the gap between physical craft and digital identity through 3D assets." },
+                  { title: "Cloud Scale", desc: "Robust, high-performance infrastructure built for global scalability and security." }
+                ].map((s, i) => (
+                  <div key={i} className="border-b border-black/10 pb-12 group cursor-pointer">
+                    <div className="flex items-start justify-between mb-6">
+                      <h5 className="text-4xl font-black font-integral uppercase tracking-tighter group-hover:translate-x-2 transition-transform duration-500">
+                        {s.title}
+                      </h5>
+                      <span className="text-red-600 font-druk text-sm">0{i+1}</span>
+                    </div>
+                    <p className="text-zinc-600 text-xl leading-relaxed font-neue max-w-lg">{s.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="text-center md:text-left pt-8 border-t border-white/5">
-             <p className="text-zinc-800 text-[10px] uppercase tracking-widest">© 2024 ALEX DESIGN & PROGRAMMING. ALL RIGHTS RESERVED.</p>
-          </div>
-        </div>
-      </footer>
+        </section>
+
+        {/* Footer / Contact */}
+        <footer className="py-48 px-6 relative overflow-hidden flex flex-col items-center">
+           <div className="reveal-up relative z-10 w-full">
+             <span className="text-hape-label opacity-40 mb-16 block text-center font-druk">Available for global projects</span>
+             <h2 className="text-[14vw] font-black tracking-[-0.06em] leading-none mb-20 text-white font-integral text-center uppercase">
+               LET&apos;S <br /> CONNECT.
+             </h2>
+             <div className="flex flex-wrap justify-center gap-x-16 gap-y-8">
+               {['Instagram', 'Twitter', 'LinkedIn', 'Behance'].map((s) => (
+                 <Magnetic key={s} strength={15}>
+                   <span className="text-hape-label hover:text-red-500 transition-colors cursor-pointer font-druk text-xs">{s}</span>
+                 </Magnetic>
+               ))}
+             </div>
+             <div className="mt-40 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-7xl mx-auto px-6 opacity-40">
+               <span className="text-[10px] font-bold tracking-widest uppercase">© 2025 ADP AGENCY</span>
+               <span className="text-[10px] font-bold tracking-widest uppercase">London / São Paulo / Tokyo</span>
+               <span className="text-[10px] font-bold tracking-widest uppercase">Pixel Perfect Logic</span>
+             </div>
+           </div>
+        </footer>
+      </div>
     </main>
   );
 }

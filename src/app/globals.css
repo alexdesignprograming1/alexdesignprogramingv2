@@ -1,23 +1,58 @@
 @import "tailwindcss";
 
-@theme {
-  --color-base: #000000;
-  --color-primary: #ffffff;
-  --color-glass: rgba(255, 255, 255, 0.05);
-  --color-glass-hover: rgba(255, 255, 255, 0.08);
-  --color-border-glass: rgba(255, 255, 255, 0.1);
-  --color-border-glass-hover: rgba(255, 255, 255, 0.15);
-  --color-border-focus: rgba(255, 255, 255, 0.2);
-  --color-border-focus-glow: rgba(255, 255, 255, 0.6);
-  --color-glow-soft: rgba(255, 255, 255, 0.03);
-  --color-glow-interactive: rgba(255, 255, 255, 0.15);
+@font-face {
+  font-family: 'Integral CF';
+  src: url('/fonts/Integral-CF-Regular.e801d2be.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
 
+@font-face {
+  font-family: 'Integral CF';
+  src: url('/fonts/Integral-CF-DemiBold.18b5f274.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Integral CF';
+  src: url('/fonts/Integral-CF-ExtraBold.12e9b8ee.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide';
+  src: url('/fonts/Druk-Text-Wide-Bold.db9e48ee.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Plak Extended';
+  src: url('/fonts/Neue-Plak-Extended-Regular.f7d043f6.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@theme {
+  --color-base: #6a0000; /* Hape Red */
+  --color-primary: #ffffff;
+  --color-glass: rgba(0, 0, 0, 0.25);
+  --color-glass-hover: rgba(0, 0, 0, 0.4);
+  --color-border-glass: rgba(255, 255, 255, 0.1);
+  --color-border-glass-hover: rgba(255, 255, 255, 0.2);
+  
+  --font-integral: 'Integral CF', sans-serif;
+  --font-druk: 'Druk Text Wide', sans-serif;
+  --font-neue: 'Neue Plak Extended', sans-serif;
   --font-sans: var(--font-inter);
 }
 
 :root {
-  --background: #000000;
-  --foreground: #e5e2e1;
+  --background: #6a0000;
+  --foreground: #ffffff;
+  --body-noise-opacity: 0.15;
 }
 
 body {
@@ -25,7 +60,34 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
-  cursor: none; /* Hide default cursor */
+  cursor: none;
+}
+
+@utility noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--body-noise-opacity);
+  background-image: url("/noise.png");
+  background-repeat: repeat;
+  background-size: 200px auto;
+}
+
+@utility bg-red-mesh {
+  background-color: #5a0000;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(255, 0, 0, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(0, 0, 0, 0.4) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(126, 12, 12, 0.5) 0px, transparent 80%);
+}
+
+@utility text-hape-label {
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 * {
@@ -74,4 +136,22 @@ a, button, [role="button"] {
 
 @utility glow-interactive {
   background: radial-gradient(circle, var(--color-glow-interactive) 0%, transparent 70%);
+}
+
+@keyframes title-rotate {
+  0% { transform: rotateX(-90deg) translateY(50px); opacity: 0; }
+  100% { transform: rotateX(0deg) translateY(0); opacity: 1; }
+}
+
+@keyframes move-y {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+.animate-title {
+  animation: title-rotate 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.animate-move-y {
+  animation: move-y 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
