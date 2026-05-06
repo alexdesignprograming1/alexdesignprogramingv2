@@ -10,6 +10,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MenuModal } from '@/components/layout/MenuModal';
+import Spline from '@splinetool/react-spline';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +41,12 @@ export default function Home() {
         opacity: 0,
         duration: 1.5,
         ease: 'elastic.out(1, 0.5)'
-      }, 1.5);
+      }, 1.5)
+      .from('.spline-container', {
+        opacity: 0,
+        duration: 2,
+        ease: 'power2.inOut'
+      }, 0.8);
 
     // Background Typography Parallax
     gsap.to('.hero-bg-text', {
@@ -135,6 +141,13 @@ export default function Home() {
           <NeuralBackground />
         </div>
 
+        {/* Spline 3D Scene - Center Side */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none spline-container">
+          <div className="w-full h-full pointer-events-auto">
+            <Spline scene="https://prod.spline.design/XPu1B3hT0CtD01bu/scene.splinecode" />
+          </div>
+        </div>
+
         {/* Large Background Typography */}
         <div className="hero-bg-text absolute inset-0 z-0 flex flex-col items-center justify-center select-none pointer-events-none opacity-80">
           <h1 className="text-[35vw] md:text-[8vw] font-black tracking-[-0.08em] leading-[0.75] text-black/90 font-integral flex flex-col items-center">
@@ -195,7 +208,7 @@ export default function Home() {
           <span className="text-hape-label opacity-40 mb-2 text-right">Design & Programing</span>
           <div className="flex items-center gap-6">
             <div className="flex flex-col items-end">
-              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 font-druk">adp.ia</span>
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 font-druk">alexdp</span>
               <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white hover:text-red-400 transition-colors cursor-pointer font-druk">Skills</span>
             </div>
             <Magnetic strength={20}>
