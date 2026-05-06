@@ -94,12 +94,21 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
       {/* Main Content */}
       <div className="flex-grow flex flex-col lg:flex-row items-center justify-between mt-20 relative z-10">
         <div className="flex flex-col gap-4">
-          {['HOME', 'QUEM SOMOS', 'PROJETOS', 'SERVIÇOS'].map((link, i) => (
-            <div key={link} className="overflow-hidden">
-              <h2 className="menu-main-link text-[8vw] md:text-[6vw] font-black tracking-[-0.04em] leading-[0.9] font-integral uppercase cursor-pointer hover:text-white/40 transition-colors">
-                {link}
+          {[
+            { name: 'HOME', href: '#home' },
+            { name: 'QUEM SOMOS', href: '#services' },
+            { name: 'PROJETOS', href: '#work' },
+            { name: 'SERVIÇOS', href: '#services' }
+          ].map((link, i) => (
+            <div key={link.name} className="overflow-hidden">
+              <a
+                href={link.href}
+                onClick={onClose}
+                className="menu-main-link block text-[8vw] md:text-[6vw] font-black tracking-[-0.04em] leading-[0.9] font-integral uppercase cursor-pointer hover:text-white/40 transition-colors"
+              >
+                {link.name}
                 <span className="text-[12px] font-bold ml-4 align-top opacity-20">0{i + 1} /</span>
-              </h2>
+              </a>
             </div>
           ))}
         </div>
@@ -124,9 +133,11 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
       {/* Footer */}
       <div className="flex flex-col md:flex-row justify-between items-end mt-auto relative z-10">
         <Magnetic strength={20}>
-          <Button variant="hape" size="lg" icon={<Play className="w-4 h-4 fill-current" />}>
-            ENTRAR EM CONTATO
-          </Button>
+          <a href="https://api.whatsapp.com/send/?phone=5581999246196&text=Ol%C3%A1%21+Acessei+o+site+e+gostaria+de+saber+mais.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+            <Button variant="hape" size="lg" icon={<Play className="w-4 h-4 fill-current" />}>
+              ENTRAR EM CONTATO
+            </Button>
+          </a>
         </Magnetic>
 
         {/* <div className="flex gap-12 mt-10 md:mt-0">

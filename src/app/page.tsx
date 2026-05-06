@@ -98,9 +98,11 @@ export default function Home() {
         {/* Desktop Header */}
         <div className="absolute top-10 left-10 z-50 hidden md:flex items-center gap-6 corner-ui-item">
           <Magnetic strength={20}>
-            <Button variant="hape" size="md" icon={<Play className="w-4 h-4 fill-current" />}>
-              Ver Portfolio
-            </Button>
+            <a href="#work">
+              <Button variant="hape" size="md" icon={<Play className="w-4 h-4 fill-current" />}>
+                Ver Portfolio
+              </Button>
+            </a>
           </Magnetic>
           <div className="hidden lg:flex flex-col gap-1">
             <span className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase font-druk">Status do Sistema
@@ -118,9 +120,11 @@ export default function Home() {
 
         <div className="absolute top-10 right-10 z-50 hidden md:flex items-center gap-6 corner-ui-item">
           <Magnetic strength={20}>
-            <Button variant="hape" size="md" icon={<MoreHorizontal className="w-5 h-5" />}>
-              Iniciar Projeto
-            </Button>
+            <a href="https://api.whatsapp.com/send/?phone=5581999246196&text=Ol%C3%A1%21+Acessei+o+site+e+gostaria+de+saber+mais.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+              <Button variant="hape" size="md" icon={<MoreHorizontal className="w-5 h-5" />}>
+                Iniciar Projeto
+              </Button>
+            </a>
           </Magnetic>
           <Magnetic strength={30}>
             <button
@@ -170,7 +174,7 @@ export default function Home() {
             <span className="text-hape-label opacity-40 mb-2">IA & automação</span>
             <Magnetic strength={15}>
               <div className="flex items-center gap-3 group cursor-pointer">
-                <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white group-hover:text-red-400 transition-colors font-druk">Projetos</span>
+                <a href="#work" className="text-[12px] font-bold tracking-[0.3em] uppercase text-white group-hover:text-red-400 transition-colors font-druk">Projetos</a>
                 <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
                   <ArrowUpRight className="w-4 h-4" />
                 </div>
@@ -248,7 +252,9 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-br from-red-950/60 to-black opacity-90 group-hover:scale-110 transition-transform duration-[2s] ease-out" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700">
                     <Magnetic strength={30}>
-                      <Button variant="hape" size="md" icon={<ArrowUpRight className="w-4 h-4" />}>Ver Projeto</Button>
+                      <a href="#">
+                        <Button variant="hape" size="md" icon={<ArrowUpRight className="w-4 h-4" />}>Ver Projeto</Button>
+                      </a>
                     </Magnetic>
                   </div>
                   {/* Number Overlay */}
@@ -278,9 +284,11 @@ export default function Home() {
                   NÓS <br /> CRIAMOS, <br /> A I.A. <br /> TRABALHA.
                 </h2>
                 <Magnetic strength={20}>
-                  <Button variant="hape" size="lg" className="bg-black text-white hover:bg-zinc-900 border-none px-10 h-16" icon={<ArrowRight className="w-5 h-5" />}>
-                    Entrar em contato
-                  </Button>
+                  <a href="https://api.whatsapp.com/send/?phone=5581999246196&text=Ol%C3%A1%21+Acessei+o+site+e+gostaria+de+saber+mais.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+                    <Button variant="hape" size="lg" className="bg-black text-white hover:bg-zinc-900 border-none px-10 h-16" icon={<ArrowRight className="w-5 h-5" />}>
+                      Entrar em contato
+                    </Button>
+                  </a>
                 </Magnetic>
               </div>
               <div className="flex flex-col gap-0 reveal-up lg:col-span-5 pt-10 lg:pt-0">
