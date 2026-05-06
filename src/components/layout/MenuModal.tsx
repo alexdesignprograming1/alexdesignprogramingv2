@@ -74,9 +74,9 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
       {/* Header */}
       <div className="flex justify-between items-start relative z-10">
         <div className="flex items-center gap-4">
-          <span className="text-3xl font-black font-integral">ADP AGENCY®</span>
+          <span className="text-3xl font-black font-integral">Alex Design Programing®</span>
         </div>
-        
+
         <div className="flex items-center gap-6">
           <span className="text-[12px] font-bold tracking-[0.4em] opacity-40 uppercase font-druk">Close Menu</span>
           <Magnetic strength={30}>
@@ -93,7 +93,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
       {/* Main Content */}
       <div className="flex-grow flex flex-col lg:flex-row items-center justify-between mt-20 relative z-10">
         <div className="flex flex-col gap-4">
-          {['HOME', 'OUR TEAM', 'PROJECTS', 'SERVICES'].map((link, i) => (
+          {['HOME', 'QUEM SOMOS', 'PROJETOS', 'SERVIÇOS'].map((link, i) => (
             <div key={link} className="overflow-hidden">
               <h2 className="menu-main-link text-[8vw] md:text-[6vw] font-black tracking-[-0.04em] leading-[0.9] font-integral uppercase cursor-pointer hover:text-white/40 transition-colors">
                 {link}
@@ -105,11 +105,10 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
 
         <div className="flex flex-col gap-8 text-right mt-20 lg:mt-0">
           {[
-            'JOIN OUR DISCORD',
-            'VIEW MARKETPLACE',
-            'FOLLOW US ON TWITTER',
-            'ROADMAP',
-            'PARTNERSHIPS'
+            'INSTAGRAM',
+            'LINKEDIN',
+            'WHATSAPP',
+            'TWITTER',
           ].map((link) => (
             <div key={link} className="menu-sub-link flex items-center justify-end gap-4 group cursor-pointer">
               <span className="text-[12px] font-bold tracking-tighter opacity-40 group-hover:opacity-100 transition-opacity font-druk uppercase">
@@ -125,23 +124,23 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
       <div className="flex flex-col md:flex-row justify-between items-end mt-auto relative z-10">
         <Magnetic strength={20}>
           <Button variant="hape" size="lg" icon={<Play className="w-4 h-4 fill-current" />}>
-            Play Trailer
+            ENTRAR EM CONTATO
           </Button>
         </Magnetic>
 
-        <div className="flex gap-12 mt-10 md:mt-0">
+        {/* <div className="flex gap-12 mt-10 md:mt-0">
           <span className="text-[11px] font-bold tracking-[0.3em] opacity-40 hover:opacity-100 transition-opacity cursor-pointer font-druk uppercase">
             Terms & Conditions
           </span>
           <span className="text-[11px] font-bold tracking-[0.3em] opacity-40 hover:opacity-100 transition-opacity cursor-pointer font-druk uppercase">
             Privacy Policy
           </span>
-        </div>
+        </div> */}
       </div>
 
       {/* Background Text */}
       <div className="absolute bottom-[-5%] left-1/2 -translate-x-1/2 opacity-5 pointer-events-none whitespace-nowrap overflow-hidden">
-        <span className="text-[25vw] font-black font-integral uppercase">ADP AGENCY LONDON</span>
+        <span className="text-[25vw] font-black font-integral uppercase">ALEX D </span>
       </div>
     </div>
   );

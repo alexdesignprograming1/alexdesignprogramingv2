@@ -99,15 +99,15 @@ export default function Home() {
         <div className="absolute top-10 left-10 z-50 hidden md:flex items-center gap-6 corner-ui-item">
           <Magnetic strength={20}>
             <Button variant="hape" size="md" icon={<Play className="w-4 h-4 fill-current" />}>
-              Play Trailer
+              Ver Portfolio
             </Button>
           </Magnetic>
           <div className="hidden lg:flex flex-col gap-1">
-            <span className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase font-druk">Fluxo produtivo
+            <span className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase font-druk">Status do Sistema
             </span>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_#ef4444]" />
-              <span className="text-[11px] font-bold tracking-[0.2em] text-white/80 uppercase font-druk">Ação: ativamente</span>
+              <span className="text-[11px] font-bold tracking-[0.2em] text-white/80 uppercase font-druk">Aceitando Projetos</span>
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function Home() {
         <div className="absolute top-10 right-10 z-50 hidden md:flex items-center gap-6 corner-ui-item">
           <Magnetic strength={20}>
             <Button variant="hape" size="md" icon={<MoreHorizontal className="w-5 h-5" />}>
-              Entre em contato
+              Iniciar Projeto
             </Button>
           </Magnetic>
           <Magnetic strength={30}>
@@ -149,13 +149,19 @@ export default function Home() {
         </div>
 
         {/* Large Background Typography */}
-        <div className="hero-bg-text absolute inset-0 z-0 flex flex-col items-center justify-center select-none pointer-events-none opacity-80">
-          <h1 className="text-[35vw] md:text-[8vw] font-black tracking-[-0.08em] leading-[0.75] text-black/90 font-integral flex flex-col items-center">
+        <div className="hero-bg-text absolute inset-0 z-20 flex flex-col items-center justify-start pt-40 select-none pointer-events-none opacity-80">
+          <h1 className="text-[35vw] md:text-[8vw] font-black tracking-[-0.08em] leading-[0.75] text-white/90 font-integral flex flex-col items-center">
             <span className="inline-block translate-y-[-5%]">Alex Design Programing</span>
           </h1>
-          {/* <div className="mt-8 text-center md:hidden px-10">
-            <p className="text-[10px] font-bold tracking-[0.3em] opacity-40 uppercase font-druk">Fully 3D and ready to redefine digital fashion</p>
-          </div> */}
+
+          <div className="flex justify-between w-full gap-4">
+            <div className="mt-8 text-center px-10 max-w-[30%]">
+              <p className="text-[12px] font-bold tracking-[0.3em] opacity-100 uppercase font-druk">LANDING PAGES DE ALTA PERFORMANCE, AUTOMAÇÕES INTELIGENTES</p>
+            </div>
+            <div className="mt-8 text-center px-10 max-w-[30%]">
+              <p className="text-[12px] font-bold tracking-[0.3em] opacity-100 uppercase font-druk">DESIGN FOCADO EM CONVERSÃO, PROCESSOS 100% AUTOMATIZADOS COM IA</p>
+            </div>
+          </div>
         </div>
 
         {/* Desktop Bottom UI */}
@@ -180,7 +186,7 @@ export default function Home() {
               <Cpu className="w-5 h-5 text-white/60" />
             </div>
             <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center overflow-hidden">
-              <div className="w-full h-full bg-white/20 flex items-center justify-center text-[8px] font-bold">ICON</div>
+              <div className="w-full h-full bg-white/20 flex items-center justify-center text-[8px] font-bold">IA</div>
             </div>
           </div>
 
@@ -199,7 +205,7 @@ export default function Home() {
               <div className="animate-bounce absolute top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full" />
             </div>
             <p className="text-[9px] font-bold tracking-[0.3em] uppercase font-druk text-center leading-none">
-              Scroll <br /> <span className="opacity-60">to explore</span>
+              Role para <br /> <span className="opacity-60">explorar</span>
             </p>
           </div>
         </div>
@@ -208,7 +214,7 @@ export default function Home() {
           <span className="text-hape-label opacity-40 mb-2 text-right">Design & Programing</span>
           <div className="flex items-center gap-6">
             <div className="flex flex-col items-end">
-              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 font-druk">alexdp</span>
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 font-druk">Tech Stack</span>
               <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white hover:text-red-400 transition-colors cursor-pointer font-druk">Skills</span>
             </div>
             <Magnetic strength={20}>
@@ -226,9 +232,9 @@ export default function Home() {
         {/* Work Section */}
         <section id="work" className="py-64 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="flex flex-col mb-40 reveal-up">
-            <span className="text-hape-label text-red-500 mb-10 block font-druk">Selected Works 2024—2025</span>
+            <span className="text-hape-label text-red-500 mb-10 block font-druk">Projetos em destaque</span>
             <h2 className="text-[9vw] font-black tracking-[-0.05em] leading-[0.85] text-white font-integral uppercase">
-              CRAFTING <br /> THE FUTURE.
+              DESIGN & <br /> AUTOMAÇÃO & <br /> IA
             </h2>
           </div>
 
@@ -242,7 +248,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-br from-red-950/60 to-black opacity-90 group-hover:scale-110 transition-transform duration-[2s] ease-out" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700">
                     <Magnetic strength={30}>
-                      <Button variant="hape" size="md" icon={<ArrowUpRight className="w-4 h-4" />}>Explore Case</Button>
+                      <Button variant="hape" size="md" icon={<ArrowUpRight className="w-4 h-4" />}>Ver Projeto</Button>
                     </Magnetic>
                   </div>
                   {/* Number Overlay */}
@@ -267,22 +273,22 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start">
               <div className="reveal-up sticky top-32">
-                <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-red-600 mb-10 block font-druk">Agency DNA</span>
+                <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-red-600 mb-10 block font-druk">ANossas Soluções</span>
                 <h2 className="text-[7vw] font-black tracking-[-0.04em] leading-[0.85] mb-14 font-integral uppercase">
-                  WE BUILD <br /> WHAT OTHERS <br /> DREAM.
+                  NÓS CRIAMOS. <br /> A I.A. <br /> TRABALHA.
                 </h2>
                 <Magnetic strength={20}>
                   <Button variant="hape" size="lg" className="bg-black text-white hover:bg-zinc-900 border-none px-10 h-16" icon={<ArrowRight className="w-5 h-5" />}>
-                    View Capabilities
+                    Entrar em contato
                   </Button>
                 </Magnetic>
               </div>
               <div className="grid grid-cols-1 gap-16 reveal-up pt-10">
                 {[
-                  { title: "Generative AI", desc: "Custom LLMs and image generation pipelines tailored for high-end brand experiences." },
-                  { title: "Creative Dev", desc: "Award-winning motion design and immersive WebGL environments that captivate." },
-                  { title: "Digital Fashion", desc: "Bridging the gap between physical craft and digital identity through 3D assets." },
-                  { title: "Cloud Scale", desc: "Robust, high-performance infrastructure built for global scalability and security." }
+                  { title: "Landing Pages", desc: "Design focado em conversão extrema. Páginas ultra rápidas que transformam visitantes casuais em clientes qualificados." },
+                  { title: "Automação de Fluxos", desc: "Conectamos todos os seus aplicativos. Sistemas inteligentes que rodam 24 horas por dia, 7 dias por semana, sem intervenção humana." },
+                  { title: "Chatbots & IA", desc: "Assistentes virtuais avançados treinados com os dados do seu negócio para atendimento ao cliente e triagem de leads." },
+                  { title: "Integrações de API", desc: "Sincronização de sistemas complexos. Tudo conectado em perfeita harmonia para escalar a infraestrutura da sua empresa." }
                 ].map((s, i) => (
                   <div key={i} className="border-b border-black/10 pb-12 group cursor-pointer">
                     <div className="flex items-start justify-between mb-6">
@@ -302,21 +308,21 @@ export default function Home() {
         {/* Footer / Contact */}
         <footer className="py-48 px-6 relative overflow-hidden flex flex-col items-center">
           <div className="reveal-up relative z-10 w-full">
-            <span className="text-hape-label opacity-40 mb-16 block text-center font-druk">Available for global projects</span>
+            <span className="text-hape-label opacity-40 mb-16 block text-center font-druk">Disponível para projetos globais</span>
             <h2 className="text-[14vw] font-black tracking-[-0.06em] leading-none mb-20 text-white font-integral text-center uppercase">
-              LET&apos;S <br /> CONNECT.
+              VAMOS <br /> CONVERSAR.
             </h2>
             <div className="flex flex-wrap justify-center gap-x-16 gap-y-8">
-              {['Instagram', 'Twitter', 'LinkedIn', 'Behance'].map((s) => (
+              {['Instagram', 'WhatsApp', 'LinkedIn', 'E-mail'].map((s) => (
                 <Magnetic key={s} strength={15}>
                   <span className="text-hape-label hover:text-red-500 transition-colors cursor-pointer font-druk text-xs">{s}</span>
                 </Magnetic>
               ))}
             </div>
             <div className="mt-40 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-7xl mx-auto px-6 opacity-40">
-              <span className="text-[10px] font-bold tracking-widest uppercase">© 2025 ADP AGENCY</span>
-              <span className="text-[10px] font-bold tracking-widest uppercase">London / São Paulo / Tokyo</span>
-              <span className="text-[10px] font-bold tracking-widest uppercase">Pixel Perfect Logic</span>
+              <span className="text-[10px] font-bold tracking-widest uppercase">© {new Date().getFullYear()} AlexDesignPrograming</span>
+              <span className="text-[10px] font-bold tracking-widest uppercase">Brasil / Global</span>
+              <span className="text-[10px] font-bold tracking-widest uppercase">Automação & Design de Elite</span>
             </div>
           </div>
         </footer>
