@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { X, Play, ArrowUpRight } from 'lucide-react';
+import { X, Play, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Magnetic } from '@/components/ui/Magnetic';
 import gsap from 'gsap';
@@ -75,11 +75,11 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
       {/* Header */}
       <div className="flex justify-between items-start relative z-10">
         <div className="flex items-center gap-4">
-          <span className="text-3xl font-black font-integral">Alex Design Programing®</span>
+          <img src="/logowhite.png" alt="Logo" className="h-12 md:h-14 w-auto object-contain" />
         </div>
 
         <div className="flex items-center gap-6">
-          <span className="text-[12px] font-bold tracking-[0.4em] opacity-40 uppercase font-druk">Close Menu</span>
+          {/* <span className="text-[12px] font-bold tracking-[0.4em] opacity-40 uppercase font-druk">Close Menu</span> */}
           <Magnetic strength={30}>
             <button
               onClick={onClose}
@@ -96,7 +96,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
         <div className="flex flex-col gap-4">
           {[
             { name: 'HOME', href: '#home' },
-            { name: 'QUEM SOMOS', href: '#services' },
+            { name: 'QUEM SOU', href: '#services' },
             { name: 'PROJETOS', href: '#work' },
             { name: 'SERVIÇOS', href: '#services' }
           ].map((link, i) => (
@@ -104,7 +104,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
               <a
                 href={link.href}
                 onClick={onClose}
-                className="menu-main-link block text-[8vw] md:text-[6vw] font-black tracking-[-0.04em] leading-[0.9] font-integral uppercase cursor-pointer hover:text-white/40 transition-colors"
+                className="menu-main-link block text-5xl sm:text-6xl md:text-[6vw] font-black tracking-[-0.04em] leading-[0.9] font-integral uppercase cursor-pointer hover:text-white/40 transition-colors"
               >
                 {link.name}
                 <span className="text-[12px] font-bold ml-4 align-top opacity-20">0{i + 1} /</span>
@@ -133,8 +133,8 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
       {/* Footer */}
       <div className="flex flex-col md:flex-row justify-between items-end mt-auto relative z-10">
         <Magnetic strength={20}>
-          <a href="https://api.whatsapp.com/send/?phone=5581999246196&text=Ol%C3%A1%21+Acessei+o+site+e+gostaria+de+saber+mais.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
-            <Button variant="hape" size="lg" icon={<Play className="w-4 h-4 fill-current" />}>
+          <a href="https://api.whatsapp.com/send/?phone=5581999246196&text=Ol%C3%A1%21+Acessei+o+site+e+gostaria+de+saber+mais.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="block w-full md:w-auto">
+            <Button variant="hape" size="md" className="w-full md:w-auto mt-8" icon={<ArrowRight className="w-4 h-4 fill-current" />}>
               ENTRAR EM CONTATO
             </Button>
           </a>

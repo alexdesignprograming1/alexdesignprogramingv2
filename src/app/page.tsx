@@ -104,14 +104,14 @@ export default function Home() {
         {/* Mobile Header (Hape Style) */}
         <div className="absolute top-6 left-6 right-6 z-50 flex md:hidden items-center justify-between pointer-events-none">
           <div className="pointer-events-auto">
-            <span className="text-xl font-black font-integral text-white tracking-tighter">ADP®</span>
+            <img src="/logowhite.png" alt="Logo" className="h-12 md:h-14 w-auto object-contain" />
           </div>
           <div className="flex items-center gap-4 pointer-events-auto">
-            <div className="flex flex-col items-end opacity-40">
+            {/* <div className="flex flex-col items-end opacity-40">
               <div className="flex gap-0.5 h-3 items-end">
                 {[0.4, 0.8, 0.6, 1].map((h, i) => <div key={i} className="w-[2px] bg-white" style={{ height: `${h * 100}%` }} />)}
               </div>
-            </div>
+            </div> */}
             <button
               onClick={() => setIsMenuOpen(true)}
               className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center"
@@ -208,16 +208,16 @@ export default function Home() {
 
         {/* Large Background Typography */}
         <div className="hero-bg-text absolute inset-0 z-20 flex flex-col items-center justify-start pt-40 select-none pointer-events-none opacity-80">
-          <h1 className="text-[35vw] md:text-[8vw] font-black tracking-[-0.08em] leading-[0.75] text-white/90 font-integral flex flex-col items-center">
-            <span className="inline-block translate-y-[-5%]">Alex Design Programing</span>
+          <h1 className="text-[14vw] sm:text-[12vw] md:text-[8vw] font-black tracking-[-0.04em] md:tracking-[-0.08em] leading-[0.85] text-white/90 font-integral flex flex-col items-center text-center">
+            <span className="inline-block translate-y-[-5%]">Alex Design<br className="md:hidden" /> Programing</span>
           </h1>
 
-          <div className="flex justify-between w-full gap-4">
-            <div className="mt-8 text-center px-10 max-w-[30%]">
-              <p className="text-[12px] font-bold tracking-[0.3em] opacity-100 uppercase font-druk">LANDING PAGES DE ALTA PERFORMANCE, AUTOMAÇÕES INTELIGENTES</p>
+          <div className="flex flex-col md:flex-row justify-between w-full gap-4 px-6 md:px-0">
+            <div className="mt-8 text-center md:px-10 w-full md:max-w-[30%]">
+              <p className="text-[10px] md:text-[12px] font-bold tracking-[0.2em] md:tracking-[0.3em] opacity-100 uppercase font-druk leading-relaxed">LANDING PAGES DE ALTA PERFORMANCE, AUTOMAÇÕES INTELIGENTES</p>
             </div>
-            <div className="mt-8 text-center px-10 max-w-[30%]">
-              <p className="text-[12px] font-bold tracking-[0.3em] opacity-100 uppercase font-druk">DESIGN FOCADO EM CONVERSÃO, PROCESSOS 100% AUTOMATIZADOS COM IA</p>
+            <div className="mt-4 md:mt-8 text-center md:px-10 w-full md:max-w-[30%]">
+              <p className="text-[10px] md:text-[12px] font-bold tracking-[0.2em] md:tracking-[0.3em] opacity-100 uppercase font-druk leading-relaxed">DESIGN FOCADO EM CONVERSÃO, PROCESSOS 100% AUTOMATIZADOS COM IA</p>
             </div>
           </div>
         </div>
@@ -275,11 +275,11 @@ export default function Home() {
               <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 font-druk">Tech Stack</span>
               <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white hover:text-red-400 transition-colors cursor-pointer font-druk">Skills</span>
             </div>
-            <Magnetic strength={20}>
+            {/* <Magnetic strength={20}>
               <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer">
                 <Volume2 className="w-4 h-4" />
               </div>
-            </Magnetic>
+            </Magnetic> */}
           </div>
         </div>
       </section>
@@ -288,10 +288,10 @@ export default function Home() {
       <div className="relative z-30 bg-black/80 backdrop-blur-[100px] border-t border-white/5">
 
         {/* Work Section */}
-        <section id="work" className="py-64 px-6 md:px-12 max-w-7xl mx-auto">
-          <div className="flex flex-col mb-40 reveal-up">
-            <span className="text-hape-label text-red-500 mb-10 block font-druk">Projetos em destaque</span>
-            <h2 className="text-[7vw] font-black tracking-[-0.05em] leading-[0.85] text-white font-integral uppercase">
+        <section id="work" className="py-32 lg:py-64 px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="flex flex-col mb-20 lg:mb-40 reveal-up">
+            <span className="text-hape-label text-red-500 mb-6 lg:mb-10 block font-druk">Projetos em destaque</span>
+            <h2 className="text-[12vw] md:text-[7vw] font-black tracking-[-0.05em] leading-[0.85] text-white font-integral uppercase">
               DESIGN & <br /> AUTOMAÇÃO & <br /> IA
             </h2>
           </div>
@@ -346,20 +346,20 @@ export default function Home() {
         </section>
 
         {/* Services & Strategy */}
-        <section id="services" className="py-64 bg-white text-black relative overflow-hidden">
+        <section id="services" className="py-32 lg:py-64 bg-white text-black relative overflow-hidden">
           {/* Subtle noise on white bg */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.png')] bg-repeat" />
 
           <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-start">
-              <div className="reveal-up sticky top-32 lg:col-span-7">
-                <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-red-600 mb-10 block font-druk">NOSSAS SOLUÇÕES</span>
-                <h2 className="text-[15vw] lg:text-[6vw] font-black tracking-[-0.04em] leading-[0.85] mb-24 font-integral uppercase text-black">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              <div className="reveal-up lg:sticky top-32 lg:col-span-7">
+                <span className="text-[10px] md:text-[11px] font-bold tracking-[0.5em] uppercase text-red-600 mb-6 lg:mb-10 block font-druk">NOSSAS SOLUÇÕES</span>
+                <h2 className="text-[16vw] lg:text-[6vw] font-black tracking-[-0.04em] leading-[0.85] mb-12 lg:mb-24 font-integral uppercase text-black">
                   NÓS <br /> CRIAMOS, <br /> A I.A. <br /> TRABALHA.
                 </h2>
                 <Magnetic strength={20}>
-                  <a href="https://api.whatsapp.com/send/?phone=5581999246196&text=Ol%C3%A1%21+Acessei+o+site+e+gostaria+de+saber+mais.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
-                    <Button variant="hape" size="lg" className="bg-black text-white hover:bg-zinc-900 border-none px-10 h-16" icon={<ArrowRight className="w-5 h-5" />}>
+                  <a href="https://api.whatsapp.com/send/?phone=5581999246196&text=Ol%C3%A1%21+Acessei+o+site+e+gostaria+de+saber+mais.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto">
+                    <Button variant="hape" className="bg-black text-white hover:bg-zinc-900 border-none px-6 md:px-10 h-14 md:h-16 w-full sm:w-auto text-sm md:text-base flex items-center justify-center" icon={<ArrowRight className="w-4 h-4 md:w-5 md:h-5" />}>
                       Entrar em contato
                     </Button>
                   </a>
