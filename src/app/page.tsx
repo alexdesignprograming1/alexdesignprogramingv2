@@ -301,7 +301,7 @@ export default function Home() {
               {
                 title: "Bestpass",
                 tag: "Plataforma de Assinatura de Viagens",
-                desc: "Plataforma de assinatura de viagens corporativas e de lazer. Interface imersiva de alta performance desenhada para facilitar reservas e maximizar a conversão de novos usuários.",
+                desc: "Plataforma de assinatura de viagens corporativas e de lazer. Interface imersiva de alta performance desenhada para facilitar reservas, enriquecer a cultura de cada pessoa com a qual interagimos.",
                 num: "01",
                 image: "bestpass.png",
                 url: "https://bestpass.com.br"
@@ -316,9 +316,14 @@ export default function Home() {
               }
             ].map((item, i) => (
               <div key={i} className="group reveal-up cursor-pointer">
-                <div className="aspect-[16/10] rounded-[40px] bg-zinc-950 border border-white/5 mb-12 overflow-hidden relative">
-
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-950/60 to-black opacity-90 group-hover:scale-110 transition-transform duration-[2s] ease-out" />
+                <div className="aspect-[16/10] rounded-[40px] bg-zinc-950 border border-white/5 mb-12 overflow-hidden relative z-[10000] shadow-2xl">
+                  {item.image ? (
+                    <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out opacity-80 group-hover:opacity-100" />
+                  ) : (
+                    <div className="absolute inset-0 bg-zinc-900 group-hover:scale-110 transition-transform duration-[2s] ease-out" />
+                  )}
+                  {/* Subtle hover overlay to ensure the button is visible */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700">
                     <Magnetic strength={30}>
                       <button onClick={(e) => { e.preventDefault(); setSelectedProject(item); }}>
