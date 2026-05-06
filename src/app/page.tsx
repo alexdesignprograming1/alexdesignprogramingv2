@@ -233,7 +233,7 @@ export default function Home() {
         <section id="work" className="py-64 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="flex flex-col mb-40 reveal-up">
             <span className="text-hape-label text-red-500 mb-10 block font-druk">Projetos em destaque</span>
-            <h2 className="text-[9vw] font-black tracking-[-0.05em] leading-[0.85] text-white font-integral uppercase">
+            <h2 className="text-[7vw] font-black tracking-[-0.05em] leading-[0.85] text-white font-integral uppercase">
               DESIGN & <br /> AUTOMAÇÃO & <br /> IA
             </h2>
           </div>
@@ -271,11 +271,11 @@ export default function Home() {
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.png')] bg-repeat" />
 
           <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-start">
-              <div className="reveal-up sticky top-32">
-                <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-red-600 mb-10 block font-druk">ANossas Soluções</span>
-                <h2 className="text-[7vw] font-black tracking-[-0.04em] leading-[0.85] mb-14 font-integral uppercase">
-                  NÓS CRIAMOS. <br /> A I.A. <br /> TRABALHA.
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-start">
+              <div className="reveal-up sticky top-32 lg:col-span-7">
+                <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-red-600 mb-10 block font-druk">NOSSAS SOLUÇÕES</span>
+                <h2 className="text-[15vw] lg:text-[6vw] font-black tracking-[-0.04em] leading-[0.85] mb-24 font-integral uppercase text-black">
+                  NÓS <br /> CRIAMOS, <br /> A I.A. <br /> TRABALHA.
                 </h2>
                 <Magnetic strength={20}>
                   <Button variant="hape" size="lg" className="bg-black text-white hover:bg-zinc-900 border-none px-10 h-16" icon={<ArrowRight className="w-5 h-5" />}>
@@ -283,21 +283,21 @@ export default function Home() {
                   </Button>
                 </Magnetic>
               </div>
-              <div className="grid grid-cols-1 gap-16 reveal-up pt-10">
+              <div className="flex flex-col gap-0 reveal-up lg:col-span-5 pt-10 lg:pt-0">
                 {[
                   { title: "Landing Pages", desc: "Design focado em conversão extrema. Páginas ultra rápidas que transformam visitantes casuais em clientes qualificados." },
                   { title: "Automação de Fluxos", desc: "Conectamos todos os seus aplicativos. Sistemas inteligentes que rodam 24 horas por dia, 7 dias por semana, sem intervenção humana." },
                   { title: "Chatbots & IA", desc: "Assistentes virtuais avançados treinados com os dados do seu negócio para atendimento ao cliente e triagem de leads." },
                   { title: "Integrações de API", desc: "Sincronização de sistemas complexos. Tudo conectado em perfeita harmonia para escalar a infraestrutura da sua empresa." }
                 ].map((s, i) => (
-                  <div key={i} className="border-b border-black/10 pb-12 group cursor-pointer">
-                    <div className="flex items-start justify-between mb-6">
-                      <h5 className="text-4xl font-black font-integral uppercase tracking-tighter group-hover:translate-x-2 transition-transform duration-500">
+                  <div key={i} className="border-b border-black/10 pb-12 pt-12 first:pt-0 group cursor-pointer">
+                    <div className="flex items-start justify-between mb-4">
+                      <h5 className="text-2xl lg:text-3xl font-black font-integral uppercase tracking-tighter group-hover:translate-x-2 transition-transform duration-500 text-black">
                         {s.title}
                       </h5>
-                      <span className="text-red-600 font-druk text-sm">0{i + 1}</span>
+                      <span className="text-red-600 font-druk text-sm mt-1">0{i + 1}</span>
                     </div>
-                    <p className="text-zinc-600 text-xl leading-relaxed font-neue max-w-lg">{s.desc}</p>
+                    <p className="text-zinc-600 text-lg leading-relaxed font-neue max-w-md">{s.desc}</p>
                   </div>
                 ))}
               </div>
