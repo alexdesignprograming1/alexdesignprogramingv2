@@ -17,6 +17,33 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isLightSection, setIsLightSection] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      // Show when halfway through the hero section
+      if (window.scrollY > window.innerHeight / 2) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+
+      // Check if header is over the white services section
+      const servicesSection = document.getElementById('services');
+      if (servicesSection) {
+        const rect = servicesSection.getBoundingClientRect();
+        if (rect.top <= 80 && rect.bottom >= 80) {
+          setIsLightSection(true);
+        } else {
+          setIsLightSection(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
@@ -139,6 +166,30 @@ export default function Home() {
         </div>
 
         <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+
+        {/* Floating Scrolled Header */}
+        <div
+          className={`fixed top-0 left-0 right-0 z-[90] px-6 md:px-12 py-6 flex items-center justify-between transition-all duration-700 pointer-events-none ${isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+            }`}
+        >
+          <div className="flex items-center pointer-events-auto cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <img 
+              src={isLightSection ? "/logoblack.png" : "/logowhite.png"} 
+              alt="Logo" 
+              className={`h-12 md:h-14 w-auto object-contain transition-all duration-300 ${isLightSection ? '' : 'drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]'}`} 
+            />
+          </div>
+          <Magnetic strength={30}>
+            <button
+              onClick={() => setIsMenuOpen(true)}
+              className="h-14 w-14 flex flex-col gap-1.5 items-center justify-center rounded-full bg-black/80 backdrop-blur-md border border-white/10 hover:bg-white hover:text-black transition-all duration-500 group shadow-[0_0_30px_rgba(0,0,0,0.5)] pointer-events-auto"
+            >
+              <div className="w-5 h-[1.5px] bg-white group-hover:bg-black transition-colors" />
+              <div className="w-5 h-[1.5px] bg-white group-hover:bg-black transition-colors" />
+              <div className="w-5 h-[1.5px] bg-white group-hover:bg-black transition-colors" />
+            </button>
+          </Magnetic>
+        </div>
 
         {/* Neural Network Backdrop */}
         <div className="absolute inset-0 z-0 opacity-30">
