@@ -306,23 +306,61 @@ export default function Home() {
         </section>
 
         {/* Footer / Contact */}
-        <footer className="py-48 px-6 relative overflow-hidden flex flex-col items-center">
-          <div className="reveal-up relative z-10 w-full">
-            <span className="text-hape-label opacity-40 mb-16 block text-center font-druk">Disponível para projetos globais</span>
-            <h2 className="text-[14vw] font-black tracking-[-0.06em] leading-none mb-20 text-white font-integral text-center uppercase">
-              VAMOS <br /> CONVERSAR.
-            </h2>
-            <div className="flex flex-wrap justify-center gap-x-16 gap-y-8">
-              {['Instagram', 'WhatsApp', 'LinkedIn', 'E-mail'].map((s) => (
-                <Magnetic key={s} strength={15}>
-                  <span className="text-hape-label hover:text-red-500 transition-colors cursor-pointer font-druk text-xs">{s}</span>
-                </Magnetic>
-              ))}
+        <footer className="pt-20 pb-8 px-6 md:px-12 relative overflow-hidden bg-black text-white">
+          {/* Deep Red Glow and Noise */}
+          <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-red-950/80 to-transparent pointer-events-none opacity-80" />
+          <div className="absolute inset-0 opacity-[0.25] pointer-events-none bg-[url('/noise.png')] bg-repeat mix-blend-overlay" />
+
+          <div className="max-w-7xl mx-auto relative z-10 w-full">
+            {/* Top Red Line (Partial) */}
+            {/* <div className="w-full w-full h-[2px] bg-red-700 mb-20 opacity-20" /> */}
+
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
+              {/* Col 1: Quote */}
+              <div className="md:col-span-5 reveal-up">
+                <h3 className="text-3xl md:text-[2rem] font-black font-integral uppercase leading-[1.1] mb-8 tracking-tight">
+                  O DESIGN ATRAI.<br />
+                  A IA PROCESSA.<br />
+                  A AUTOMAÇÃO ESCALA.
+                </h3>
+                <p className="text-zinc-500 font-neue text-sm">Alex Silva</p>
+              </div>
+
+              {/* Col 2: Connect */}
+              <div className="md:col-span-3 md:col-start-7 reveal-up">
+                <h3 className="text-2xl md:text-1xl font-black font-integral uppercase leading-[1.1] mb-8 tracking-tight">
+                  CONTATE-NOS
+                </h3>
+              </div>
+
+              {/* Col 3: Links */}
+              <div className="md:col-span-3 flex flex-col gap-4 reveal-up">
+                {[
+                  { name: 'Instagram', url: 'https://www.instagram.com/alexdesignprograming/' },
+                  { name: 'WhatsApp', url: 'https://api.whatsapp.com/send/?phone=5581999246196&text=Ol%C3%A1%21+Acessei+o+site+e+gostaria+de+saber+mais.&type=phone_number&app_absent=0' },
+                  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alex-silva-programing/' },
+                  { name: 'alexsilva10san@gmail.com', url: 'mailto:alexsilva10san@gmail.com' }
+                ].map((link) => (
+                  <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors font-neue text-sm flex items-center gap-3 w-fit group">
+                    {link.name}
+                    <ArrowUpRight className="w-3 h-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                  </a>
+                ))}
+              </div>
             </div>
-            <div className="mt-40 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-7xl mx-auto px-6 opacity-40">
-              <span className="text-[10px] font-bold tracking-widest uppercase">© {new Date().getFullYear()} AlexDesignPrograming</span>
-              <span className="text-[10px] font-bold tracking-widest uppercase">Brasil / Global</span>
-              <span className="text-[10px] font-bold tracking-widest uppercase">Automação & Design de Elite</span>
+
+            {/* Bottom Bar */}
+            <div className="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 w-full text-[9px] font-bold tracking-[0.2em] uppercase font-druk text-zinc-500 reveal-up">
+              <div className="flex gap-4">
+                <span>© {new Date().getFullYear()} - ALEX DESIGN PROGRAMING</span>
+              </div>
+              {/* <div>
+                <span className="text-white">STYLED BY @ALEX SILVA</span>
+              </div> */}
+              {/* <div className="flex gap-8">
+                <span className="hover:text-white cursor-pointer transition-colors">TERMOS & CONDIÇÕES </span>
+                <span className="hover:text-white cursor-pointer transition-colors">POLÍTICA DE PRIVACIDADE</span>
+              </div> */}
             </div>
           </div>
         </footer>

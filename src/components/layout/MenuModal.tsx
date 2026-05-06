@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Magnetic } from '@/components/ui/Magnetic';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { link } from 'fs';
 
 interface MenuModalProps {
   isOpen: boolean;
@@ -105,15 +106,15 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
 
         <div className="flex flex-col gap-8 text-right mt-20 lg:mt-0">
           {[
-            'INSTAGRAM',
-            'LINKEDIN',
-            'WHATSAPP',
-            'TWITTER',
+            { name: 'INSTAGRAM', url: 'https://www.instagram.com/alexdesignprograming/' },
+            { name: 'LINKEDIN', url: 'https://www.linkedin.com/in/alex-silva-programing/' },
+            { name: 'WHATSAPP', url: 'https://api.whatsapp.com/send/?phone=5581999246196&text=Ol%C3%A1%21+Acessei+o+site+e+gostaria+de+saber+mais.&type=phone_number&app_absent=0' },
+            { name: 'alexsilva10san@gmail.com', url: 'mailto:alexsilva10san@gmail.com' }
           ].map((link) => (
-            <div key={link} className="menu-sub-link flex items-center justify-end gap-4 group cursor-pointer">
-              <span className="text-[12px] font-bold tracking-tighter opacity-40 group-hover:opacity-100 transition-opacity font-druk uppercase">
-                {link}
-              </span>
+            <div key={link.name} className="menu-sub-link flex items-center justify-end gap-4 group cursor-pointer">
+              <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-[12px] font-bold tracking-tighter opacity-40 group-hover:opacity-100 transition-opacity font-druk uppercase">
+                {link.name}
+              </a >
               <ArrowUpRight className="w-4 h-4 opacity-20 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
