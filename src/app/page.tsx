@@ -98,10 +98,11 @@ export default function Home() {
             </Button>
           </Magnetic>
           <div className="hidden lg:flex flex-col gap-1">
-            <span className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase font-druk">Intelligence Stream</span>
+            <span className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase font-druk">Fluxo produtivo
+            </span>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_#ef4444]" />
-              <span className="text-[11px] font-bold tracking-[0.2em] text-white/80 uppercase font-druk">Live: Active</span>
+              <span className="text-[11px] font-bold tracking-[0.2em] text-white/80 uppercase font-druk">Ação: ativamente</span>
             </div>
           </div>
         </div>
@@ -113,7 +114,7 @@ export default function Home() {
         <div className="absolute top-10 right-10 z-50 hidden md:flex items-center gap-6 corner-ui-item">
           <Magnetic strength={20}>
             <Button variant="hape" size="md" icon={<MoreHorizontal className="w-5 h-5" />}>
-              Marketplace
+              Entre em contato
             </Button>
           </Magnetic>
           <Magnetic strength={30}>
@@ -148,10 +149,10 @@ export default function Home() {
         {/* Desktop Bottom UI */}
         <div className="absolute bottom-10 left-10 z-50 hidden md:flex items-center gap-4 corner-ui-item">
           <div className="flex flex-col">
-            <span className="text-hape-label opacity-40 mb-2">Our Strategy</span>
+            <span className="text-hape-label opacity-40 mb-2">IA & automação</span>
             <Magnetic strength={15}>
               <div className="flex items-center gap-3 group cursor-pointer">
-                <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white group-hover:text-red-400 transition-colors font-druk">Roadmap</span>
+                <span className="text-[12px] font-bold tracking-[0.3em] uppercase text-white group-hover:text-red-400 transition-colors font-druk">Projetos</span>
                 <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
                   <ArrowUpRight className="w-4 h-4" />
                 </div>
@@ -170,13 +171,6 @@ export default function Home() {
               <div className="w-full h-full bg-white/20 flex items-center justify-center text-[8px] font-bold">ICON</div>
             </div>
           </div>
-
-          <button
-            onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-            className="pointer-events-auto h-14 px-10 rounded-full bg-black text-white border border-white/10 font-druk font-bold tracking-tighter text-[11px] uppercase shadow-2xl flex items-center gap-4"
-          >
-            <span>HAPEBAR</span>
-          </button>
         </div>
 
         {/* Hape Toolbar Center (Hape Style) - Perfectly Centralized */}
@@ -193,37 +187,15 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Hapebar Toolbar */}
-            <div className="flex items-center gap-8">
-              <p className="text-[10px] font-bold tracking-[0.4em] uppercase font-druk opacity-30">Press</p>
-
-              <Magnetic strength={50}>
-                <button
-                  onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="group relative h-16 px-12 rounded-full bg-black text-white border border-white/10 hover:border-white/40 transition-all duration-700 font-druk font-bold tracking-tighter text-[13px] uppercase overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]"
-                >
-                  {/* Progress Fill Effect */}
-                  <div className="absolute inset-0 bg-white translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]" />
-
-                  <div className="relative z-10 flex items-center gap-4 group-hover:text-black transition-colors duration-500">
-                    <div className="w-1.5 h-1.5 rounded-full bg-red-600 group-hover:bg-black transition-colors" />
-                    <span>HAPEBAR</span>
-                    <div className="w-1.5 h-1.5 rounded-full bg-red-600 group-hover:bg-black transition-colors" />
-                  </div>
-                </button>
-              </Magnetic>
-
-              <p className="text-[10px] font-bold tracking-[0.4em] uppercase font-druk opacity-30">to Enter</p>
-            </div>
           </div>
         </div>
 
         <div className="absolute bottom-10 right-10 z-50 flex flex-col items-end corner-ui-item">
-          <span className="text-hape-label opacity-40 mb-2 text-right">Atmosphere</span>
+          <span className="text-hape-label opacity-40 mb-2 text-right">Design & Programing</span>
           <div className="flex items-center gap-6">
             <div className="flex flex-col items-end">
-              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 font-druk">Index</span>
-              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white hover:text-red-400 transition-colors cursor-pointer font-druk">Fashion 8K</span>
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60 font-druk">adp.ia</span>
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white hover:text-red-400 transition-colors cursor-pointer font-druk">Skills</span>
             </div>
             <Magnetic strength={20}>
               <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer">
@@ -231,11 +203,6 @@ export default function Home() {
               </div>
             </Magnetic>
           </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 opacity-30">
-          <div className="w-[1px] h-10 bg-gradient-to-b from-white via-white to-transparent" />
         </div>
       </section>
 
