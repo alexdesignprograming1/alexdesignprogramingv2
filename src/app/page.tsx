@@ -48,31 +48,37 @@ export default function Home() {
   }, []);
 
   useGSAP(() => {
+    // Pre-hide all elements that will be animated in, to prevent flash on load
+    gsap.set('.hero-bg-text h1', { opacity: 0, y: 200 });
+    gsap.set('.hero-bg-text p', { opacity: 0, scale: 0.8 });
+    gsap.set('.corner-ui-item', { opacity: 0, y: -40 });
+    gsap.set('.spline-container', { opacity: 0 });
+
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
     // Entrance sequence
-    tl.from('.hero-bg-text h1', {
-      y: 200,
-      rotateX: -45,
-      opacity: 0,
+    tl.to('.hero-bg-text h1', {
+      y: 0,
+      rotateX: 0,
+      opacity: 1,
       duration: 2,
       stagger: 0.2,
       ease: 'expo.out'
     }, 0.5)
-      .from('.corner-ui-item', {
-        y: -40,
-        opacity: 0,
+      .to('.corner-ui-item', {
+        y: 0,
+        opacity: 1,
         duration: 1.2,
         stagger: 0.05
       }, 1.2)
-      .from('.hero-bg-text p', {
-        scale: 0.8,
-        opacity: 0,
+      .to('.hero-bg-text p', {
+        scale: 1,
+        opacity: 1,
         duration: 1.5,
         ease: 'elastic.out(1, 0.5)'
       }, 1.5)
-      .from('.spline-container', {
-        opacity: 0,
+      .to('.spline-container', {
+        opacity: 1,
         duration: 2,
         ease: 'power2.inOut'
       }, 0.8);
