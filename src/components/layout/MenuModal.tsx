@@ -96,7 +96,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
         <div className="flex flex-col gap-4">
           {[
             { name: 'HOME', href: '#home' },
-            { name: 'QUEM SOU', href: '#services' },
+            // { name: 'QUEM SOU', href: '#services' },
             { name: 'PROJETOS', href: '#work' },
             { name: 'SERVIÇOS', href: '#services' }
           ].map((link, i) => (

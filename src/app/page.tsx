@@ -359,7 +359,7 @@ export default function Home() {
                 </h2>
                 <Magnetic strength={20}>
                   <a href="https://api.whatsapp.com/send/?phone=5581999246196&text=Ol%C3%A1%21+Acessei+o+site+e+gostaria+de+saber+mais.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto">
-                    <Button variant="hape" className="bg-black text-white hover:bg-zinc-900 border-none px-6 md:px-10 h-14 md:h-16 w-full sm:w-auto text-sm md:text-base flex items-center justify-center" icon={<ArrowRight className="w-4 h-4 md:w-5 md:h-5" />}>
+                    <Button variant="hape" className="bg-black !text-white hover:bg-zinc-900 border-none px-6 md:px-10 h-14 md:h-16 w-full sm:w-auto text-sm md:text-base flex items-center justify-center" icon={<ArrowRight className="w-4 h-4 md:w-5 md:h-5" />}>
                       Entrar em contato
                     </Button>
                   </a>
@@ -409,10 +409,11 @@ export default function Home() {
               </div>
 
               {/* Col 2: Connect */}
-              <div className="md:col-span-3 md:col-start-7 reveal-up">
+              <div className="md:col-span-3 md:col-start-7 reveal-up flex flex-col items-start">
                 <h3 className="text-2xl md:text-1xl font-black font-integral uppercase leading-[1.1] mb-8 tracking-tight">
                   CONTATE-NOS
                 </h3>
+                <img src="/logowhite.png" alt="Logo" className="h-12 md:h-16 w-auto object-contain" />
               </div>
 
               {/* Col 3: Links */}
