@@ -7,6 +7,11 @@ import { useGSAP } from '@gsap/react';
 export const CustomCursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
+  const [isTouchDevice, setIsTouchDevice] = React.useState(false);
+
+  useEffect(() => {
+    setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
+  }, []);
 
   useGSAP(() => {
     const cursor = cursorRef.current;
@@ -87,6 +92,8 @@ export const CustomCursor = () => {
       });
     };
   }, []);
+
+  if (isTouchDevice) return null;
 
   return (
     <>

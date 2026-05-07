@@ -51,7 +51,7 @@ export default function Home() {
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
     // Entrance sequence
-    tl.from('.hero-title span', {
+    tl.from('.hero-bg-text h1', {
       y: 200,
       rotateX: -45,
       opacity: 0,
@@ -65,7 +65,7 @@ export default function Home() {
         duration: 1.2,
         stagger: 0.05
       }, 1.2)
-      .from('.hero-cta-pill', {
+      .from('.hero-bg-text p', {
         scale: 0.8,
         opacity: 0,
         duration: 1.5,
@@ -326,9 +326,14 @@ export default function Home() {
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-700 pointer-events-none" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700">
                     <Magnetic strength={30}>
-                      <button onClick={(e) => { e.preventDefault(); setSelectedProject(item); }}>
-                        <Button variant="hape" size="md" icon={<ArrowUpRight className="w-4 h-4" />}>Ver Projeto</Button>
-                      </button>
+                      <Button
+                        variant="hape"
+                        size="md"
+                        icon={<ArrowUpRight className="w-4 h-4" />}
+                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); setSelectedProject(item); }}
+                      >
+                        Ver Projeto
+                      </Button>
                     </Magnetic>
                   </div>
                   {/* Number Overlay */}
